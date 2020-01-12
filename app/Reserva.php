@@ -23,4 +23,8 @@ class Reserva extends Model
     public function sala_conferenciaReserva(){
             return $this->belongsTo('App\Sala_conferencia');
     }
+
+    public function habitacionReserva(){
+            return $this->belongsTo('App\Habitacion');
+    }
 }
