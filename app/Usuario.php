@@ -12,4 +12,8 @@ class Usuario extends Model
     public function tipo_usuario(){
         return $this->belongsTo('App\Tipo_usuario');
     }
+
+    public function reservas(){
+        return $this->hasMany('App\Reserva');
+    }
 }
