@@ -15,4 +15,8 @@ class Reserva extends Model
     public function regimenReserva(){
             return $this->belongsTo('App\Regimen');
     }
+
+    public function tipoReservaReserva(){
+            return $this->belongsTo('App\Tipo_reserva');
+    }
 }
