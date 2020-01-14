@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Habitacion extends Model
 {
@@ -23,6 +24,11 @@ class Habitacion extends Model
     public static function listarHabitaciones(){
         $habitaciones = Habitacion::All();
         return $habitaciones;
+    }
+
+    public static function mostrarHabitacion(Habitacion $data){
+        $habitacion = DB::table('Habitacion')->where('codigo', $data->codigo)->first();
+        return $habitacion;
     }
 
     public static function crear(array $data){
