@@ -20,6 +20,11 @@ class Habitacion extends Model
             return $this->belongsTo('App\Imagen');
     }
 
+    public static function listarHabitaciones(){
+        $habitaciones = Habitacion::All();
+        return $habitaciones;
+    }
+
     public static function crear(array $data){
         $habitacion = new Habitacion();
         $habitacion->codigo = $data['codigo'];
