@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tipo_reserva extends Model
 {
+    protected $table = "Tipo_reserva";
+
     public $timestamps = false;
 
     protected $fillable = ('codigo', 'tipo');

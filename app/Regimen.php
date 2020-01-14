@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Regimen extends Model
 {
+    protected $table = "Regimen";
+
     public $timestamps = false;
 
     protected $fillable = ('codigo', 'regimen', 'porcentaje');
