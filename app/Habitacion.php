@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Habitacion extends Model
 {
@@ -25,6 +26,11 @@ class Habitacion extends Model
         return $habitaciones;
     }
 
+    public static function mostrarHabitacion(Habitacion $data){
+        $habitacion = DB::table('Habitacion')->where('codigo', $data->codigo)->first();
+        return $habitacion;
+    }
+
     public static function crear(array $data){
         $habitacion = new Habitacion();
         $habitacion->codigo = $data['codigo'];
@@ -41,8 +47,9 @@ class Habitacion extends Model
     }
 
     public function actualizar(array $data, Habitacion $habitacion){
-        $habitacion->update($data);
-        return $habitacion;
+        $habitacionActualizada = DB::table('Habitacion')->where('codigo', $habitacion->codigo)->first();
+        $habitacionActualizada->update($data);
+        return $habitacionActualizada;
     }
 
     public function borrar(array $data, Habitacion $habitacion){
@@ -55,5 +62,10 @@ class Habitacion extends Model
     public static function leer(Habitacion $data){
         $habitacion = Habitacion::where('codigo', '=', $data->codigo);
         return $habitacion;
+    }
+
+    public static function obtenerImagenHabitacion(Habitacion $data){
+        $habitacion = Habitacion::where('codigo', '=', $data->codigo);
+        return $habitacion->habitacionImagen;
     }
 }
