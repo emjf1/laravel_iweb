@@ -7,16 +7,27 @@ use App\Tipo_usuario;
 
 class TipoUsuarioController extends Controller
 {
-    public function listaTipoUsuario(){
-        return Tipo_usuario::users();
+    public function listarTipoUsuario(){
+        return Tipo_usuario::listarTipoUsuario();
     }
 
-    public function crearTipoUsuario($data){
+    public function blanco(){
+        return "Hola mundo";
+    }
+
+    public function crearTipoUsuario( ){
+            $data = request()->validate([
+                'codigo' => ['required', 'unique:Tipo_usuario,codigo'],
+                'tipo' => 'required'
+            ], [
+                'codigo.required' => 'El campo codigo está mal',
+                'tipo.required' => 'El campo tipo está mal'
+            ]);
         return Tipo_usuario::crear($data);
     }
 
-    public function detalleTipoUsuario($data){
-        return Tipo_usuario::leer($data);    
+    public function detalleTipoUsuario(){
+        return Tipo_usuario::leer();
     }
 
     public function editarTipoUsuario($data, $tuser){

@@ -40,4 +40,9 @@ class Tipo_usuario extends Model
             $tusuario = Tipo_usuario::where('tipo', '=', $data->tipo);
             return $tusuario;
         }
+
+        public function listarTipoUsuario(){
+            $tusers = Tipo_usuario::paginate(3);
+            return $tusers;
+        }
 }
