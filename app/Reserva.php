@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reserva extends Model
 {
-    protected $fillable = ('codigo', 'fecha_inicio', 'fecha_fin', 'descripcion');
+    protected $table = "Reserva";
+
+    public $timestamps = false;
+
+    protected $fillable = array('codigo', 'fecha_inicio', 'fecha_fin', 'descripcion');
 
     public function usuarioReserva(){
         return $this->belongsTo('App\Usuario');
@@ -26,5 +30,37 @@ class Reserva extends Model
 
     public function habitacionReserva(){
             return $this->belongsTo('App\Habitacion');
+    }
+
+    public static function crear(array $data){
+        $reserva = new Reserva();
+        $reserva->codigo = $data['codigo'];
+        $reserva->fecha_inicio = $data['fecha_inicio'];
+        $reserva->fecha_fin = $data['fecha_fin'];
+        $reserva->descripcion = $data['descripcion'];
+        $reserva->usuario = $data['usuario'];
+        $reserva->habitacion = $data['habitacion'];
+        $reserva->sala_conferencia   = $data['sala_conferencia'];
+        $reserva->regimen = $data['regimen'];
+        $reserva->tipo_reserva = $data['tipo_reserva'];
+        $reserva->save();
+        return $reserva;
+    }
+
+    public function actualizar(array $data, Reserva $reserva){
+        $reserva->update($data);
+        return $reserva;
+    }
+
+    public function borrar(array $data, Reserva $reserva){
+        if($reserva->delete($data))
+            return true;
+        else
+            return false;
+    }
+
+    public static function leer(Reserva $data){
+        $reserva = Reserva::where('codigo', '=', $data->codigo);
+        return $reserva;
     }
 }
