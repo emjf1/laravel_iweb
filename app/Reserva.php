@@ -10,7 +10,7 @@ class Reserva extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ('codigo', 'fecha_inicio', 'fecha_fin', 'descripcion');
+    protected $fillable = array('codigo', 'fecha_inicio', 'fecha_fin', 'descripcion');
 
     public function usuarioReserva(){
         return $this->belongsTo('App\Usuario');

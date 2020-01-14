@@ -10,7 +10,7 @@ class Imagen extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ('codigo', 'url');
+    protected $fillable = array('codigo', 'url');
 
     public function habitacion(){
         return $this->hasMany('App\Habitacion');

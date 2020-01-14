@@ -10,7 +10,7 @@ class Habitacion extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ('codigo', 'descripcion', 'vistas', 'plazas', 'superficie', 'precio', 'categoria', 'wifi');
+    protected $fillable = array('codigo', 'descripcion', 'vistas', 'plazas', 'superficie', 'precio', 'categoria', 'wifi');
 
     public function reservas(){
         return $this->hasMany('App\Reserva');

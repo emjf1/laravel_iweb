@@ -10,7 +10,7 @@ class Temporada extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ('id', 'temporada', 'fecha_inicio', 'fecha_fin', 'porcentaje');
+    protected $fillable = array('id', 'temporada', 'fecha_inicio', 'fecha_fin', 'porcentaje');
 
     public static function crear(array $data){
         $temporada = new Temporada();
