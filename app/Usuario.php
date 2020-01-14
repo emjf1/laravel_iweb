@@ -7,6 +7,9 @@ use DB;
 
 class Usuario extends Model
 {
+    protected $table = "Usuario";
+
+    public $timestamps = false;
 
     protected $fillable = array('email', 'nombre', 'apellidos', 'telefono', 'direccion', 'contraseña', 'foto_perfil', 'DNI', 'nacionalidad');
 
@@ -18,34 +21,34 @@ class Usuario extends Model
         return $this->hasMany('App\Reserva');
     }
 
-    public static function create(array $data){
+    public static function crear(array $data){
         $usuario = new Usuario();
         $usuario->email = $data['email'];
         $usuario->nombre = $data['nombre'];
         $usuario->apellidos = $data['apellidos'];
         $usuario->telefono = $data['telefono'];
         $usuario->direccion = $data['direccion'];
-        $usuario->contraseña = $data['contraseña'];
+        $usuario->password = $data['password'];
         $usuario->foto_perfil = $data['foto_perfil'];
         $usuario->DNI = $data['DNI'];
-        $usuario->nacionalidad = $data['nacionalidad'];
+        $usuario->tipo_usuario = $data['tipo_usuario'];
         $usuario->save();
         return $usuario;
     }
 
-    public function update(array $data, Usuario $usuario){
+    public function actualizar(array $data, Usuario $usuario){
         $usuario->update($data);
         return $usuario;
     }
 
-    public function delete(array $data, Usuario $usuario){
+    public function borrar(array $data, Usuario $usuario){
         if($usuario->delete($data))
             return true;
         else
             return false;
     }
 
-    public static function read(Usuario $data){
+    public static function leer(Usuario $data){
         $usuario = Usuario::where('email', '=', $data->nombre);
         return $usuario;
     }
