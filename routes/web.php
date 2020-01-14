@@ -43,3 +43,11 @@ Route::get('/registro', 'UsuarioController@registro'); //Middleware
 Route::get('/usuario/{userID}', 'UsuarioController@infoUsuario'); //Middleware
 Route::put('/usuario/{userID}', 'UsuarioController@editarUsuario'); //Middleware
 Route::delete('/usuario/{userID}', 'UsuarioController@eliminarUsuario'); //Middleware
+
+
+// Tipo de Usuario
+Route::get('/usuario/tipo', 'TipoUsuarioController@listaTipoUsuario'); 
+Route::post('/usuario/tipo', 'TipoUsuarioController@crearTipoUsuario'); 
+Route::get('/usuario/tipo/{id}', 'TipoUsuarioController@detalleTipoUsuario'); 
+Route::put('/usuario/tipo/{id}', 'TipoUsuarioController@editarTipoUsuario'); 
+Route::delete('/usuario/tipo/{id}', 'TipoUsuarioController@eliminarTipoUsuario'); 
