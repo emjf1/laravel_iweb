@@ -41,8 +41,8 @@ class Tipo_usuario extends Model
             return $tusuario;
         }
 
-        public function listarTipoUsuario(){
-            $tusers = Tipo_usuario::paginate(3);
+        public static function listarTipoUsuario(){
+            $tusers = Tipo_usuario::all();
             return $tusers;
         }
 }

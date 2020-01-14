@@ -11,10 +11,6 @@ class TipoUsuarioController extends Controller
         return Tipo_usuario::listarTipoUsuario();
     }
 
-    public function blanco(){
-        return "Hola mundo";
-    }
-
     public function crearTipoUsuario( ){
             $data = request()->validate([
                 'codigo' => ['required', 'unique:Tipo_usuario,codigo'],
@@ -27,7 +23,7 @@ class TipoUsuarioController extends Controller
     }
 
     public function detalleTipoUsuario(){
-        return Tipo_usuario::leer();
+        return Tipo_usuario::leer($data);
     }
 
     public function editarTipoUsuario($data, $tuser){
