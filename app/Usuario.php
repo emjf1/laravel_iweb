@@ -11,7 +11,7 @@ class Usuario extends Model
 
     public $timestamps = false;
 
-    protected $fillable = array('email', 'nombre', 'apellidos', 'telefono', 'direccion', 'contraseña', 'foto_perfil', 'DNI', 'nacionalidad');
+    protected $fillable = array('email', 'nombre', 'apellidos', 'telefono', 'direccion', 'contraseña', 'DNI', 'nacionalidad');
 
     public function tipo_usuario(){
         return $this->belongsTo('App\Tipo_usuario');
@@ -29,7 +29,6 @@ class Usuario extends Model
         $usuario->telefono = $data['telefono'];
         $usuario->direccion = $data['direccion'];
         $usuario->password = $data['password'];
-        $usuario->foto_perfil = $data['foto_perfil'];
         $usuario->DNI = $data['DNI'];
         $usuario->tipo_usuario = $data['tipo_usuario'];
         $usuario->save();

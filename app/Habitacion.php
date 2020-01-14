@@ -10,7 +10,7 @@ class Habitacion extends Model
 
     public $timestamps = false;
 
-    protected $fillable = array('codigo', 'descripcion', 'vistas', 'plazas', 'superficie', 'precio', 'categoria', 'wifi');
+    protected $fillable = array('codigo', 'descripcion', 'vistas', 'plazas', 'superficie', 'precio', 'categoria', 'wifi', 'puntuacion');
 
     public function reservas(){
         return $this->hasMany('App\Reserva');
@@ -18,6 +18,11 @@ class Habitacion extends Model
 
     public function habitacionImagen(){
             return $this->belongsTo('App\Imagen');
+    }
+
+    public static function listarHabitaciones(){
+        $habitaciones = Habitacion::All();
+        return $habitaciones;
     }
 
     public static function crear(array $data){
@@ -30,6 +35,7 @@ class Habitacion extends Model
         $habitacion->precio = $data['precio'];
         $habitacion->categoria = $data['categoria'];
         $habitacion->wifi = $data['wifi'];
+        $habitacion->puntuacion = $data['puntuacion'];
         $habitacion->save();
         return $habitacion;
     }
