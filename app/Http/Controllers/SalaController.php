@@ -22,20 +22,20 @@ class SalaController extends Controller
         return response()->json($resultado);
     }
 
-    public function fotosSala($id)
+    /*public function fotosSala($id)
     {
         $data = new Sala_conferencia();
         $data->codigo = $id;
         
-        $resultado = Sala_conferencia::obtenerImagenSala($data);
+        $resultado = Sala_conferencia::mostrarImagenSala($data);
         return ($resultado);
-    }
+    }*/
 
     public function crearSala()
     {
         $data = request()->all();
 
-        $resultado = Sala_conferencia::crear($data);
+        $resultado = Sala_conferencia::crearSala($data);
         return response()->json($resultado);
     }
 
@@ -46,7 +46,7 @@ class SalaController extends Controller
         $sala = new Sala_conferencia();
         $sala->codigo = $id;
 
-        $resultado = Sala_conferencia::actualizar($data, $sala);
+        $resultado = Sala_conferencia::actualizarSala($data, $sala);
         return response()->json($resultado);
     }
 
@@ -55,7 +55,7 @@ class SalaController extends Controller
         $sala = new Habitacion();
         $sala->codigo = $id;
   
-        $resultado =  Sala_conferencia::borrar($sala);
+        $resultado =  Sala_conferencia::borrarSala($sala);
         return response()->json($resultado);
     }
 }
