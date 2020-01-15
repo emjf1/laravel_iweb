@@ -37,6 +37,11 @@ class Reserva extends Model
         return $reservas;
     }
 
+    public static function listarReservaUsuario(Usuario $usuario){
+        $reservas = DB::table('Reserva')->where('usuario', $usuario['email'])->get();
+        return $reservas;
+    }
+
     public static function crearReserva(array $data){
         $reserva = new Reserva();
         $reserva->codigo = $data['codigo'];
