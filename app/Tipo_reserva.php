@@ -15,7 +15,7 @@ class Tipo_reserva extends Model
     public function reservas(){
         return $this->hasMany('App\Reserva');
     }
-        public static function crear(array $data){
+        public static function crearTipo_reserva(array $data){
             $treserva = new Tipo_reserva();
             $treserva->codigo = $data['codigo'];
             $treserva->tipo = $data['tipo'];
@@ -23,19 +23,19 @@ class Tipo_reserva extends Model
             return $treserva;
         }
 
-        public function actualizar(array $data, Tipo_reserva $treserva){
+        public function actualizarTipo_reserva(array $data, Tipo_reserva $treserva){
             $treserva->update($data);
             return $treserva;
         }
 
-        public function borrar(array $data, Tipo_reserva $treserva){
+        public function borrarTipo_reserva(array $data, Tipo_reserva $treserva){
             if($treserva->delete($data))
                 return true;
             else
                 return false;
         }
 
-        public static function leer(Tipo_reserva $data){
+        public static function leerTipo_reserva(Tipo_reserva $data){
             $treserva = Tipo_reserva::where('codigo', '=', $data->codigo);
             return $treserva;
         }

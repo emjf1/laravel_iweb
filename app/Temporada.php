@@ -12,7 +12,7 @@ class Temporada extends Model
 
     protected $fillable = array('id', 'temporada', 'fecha_inicio', 'fecha_fin', 'porcentaje');
 
-    public static function crear(array $data){
+    public static function crearTemporada(array $data){
         $temporada = new Temporada();
         $temporada->id = $data['id'];
         $temporada->temporada = $data['temporada'];
@@ -23,19 +23,19 @@ class Temporada extends Model
         return $temporada;
     }
 
-    public function actualizar(array $data, Temporada $temporada){
+    public function actualizarTemporada(array $data, Temporada $temporada){
         $temporada->update($data);
         return $temporada;
     }
 
-    public function borrar(array $data, Temporada $temporada){
+    public function borrarTemporada(array $data, Temporada $temporada){
         if($temporada->delete($data))
             return true;
         else
             return false;
     }
 
-    public static function leer(Temporada $data){
+    public static function leerTemporada(Temporada $data){
         $temporada = Temporada::where('id', '=', $data->id);
         return $temporada;
     }

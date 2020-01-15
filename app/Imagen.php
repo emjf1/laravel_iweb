@@ -16,7 +16,7 @@ class Imagen extends Model
         return $this->hasMany('App\Habitacion');
     }
 
-    public static function crear(array $data){
+    public static function crearImagen(array $data){
         $imagen = new Imagen();
         $imagen->codigo = $data['codigo'];
         $imagen->url = $data['url'];
@@ -25,19 +25,19 @@ class Imagen extends Model
         return $imagen;
     }
 
-    public function actualizar(array $data, Imagen $imagen){
+    public function actualizarImagen(array $data, Imagen $imagen){
         $imagen->update($data);
         return $imagen;
     }
 
-    public function borrar(array $data, Imagen $imagen){
+    public function borrarImagen(array $data, Imagen $imagen){
         if($imagen->delete($data))
             return true;
         else
             return false;
     }
 
-    public static function leer(Imagen $data){
+    public static function leerImagen(Imagen $data){
         $imagen = Imagen::where('codigo', '=', $data->codigo);
         return $imagen;
     }

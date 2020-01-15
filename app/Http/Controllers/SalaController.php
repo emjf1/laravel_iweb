@@ -26,7 +26,7 @@ class SalaController extends Controller
     {
         $data = new Sala_conferencia();
         $data->codigo = $id;
-        
+
         $resultado = Sala_conferencia::mostrarImagenSala($data);
         return ($resultado);
     }*/
@@ -52,9 +52,9 @@ class SalaController extends Controller
 
     public function eliminarSala($id)
     {
-        $sala = new Habitacion();
+        $sala = new Sala_conferencia();
         $sala->codigo = $id;
-  
+
         $resultado =  Sala_conferencia::borrarSala($sala);
         return response()->json($resultado);
     }
