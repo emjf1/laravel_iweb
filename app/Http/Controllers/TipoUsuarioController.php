@@ -11,7 +11,7 @@ class TipoUsuarioController extends Controller
         return Tipo_usuario::listarTipoUsuario();
     }
 
-    public function crearTipoUsuario( ){
+    public function crearTipoUsuario(){
             $data = request()->validate([
                 'codigo' => ['required', 'unique:Tipo_usuario,codigo'],
                 'tipo' => 'required'
