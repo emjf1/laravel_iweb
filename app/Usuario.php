@@ -41,7 +41,9 @@ class Usuario extends Model
     }
 
     public function actualizarUsuario(array $data, Usuario $usuario){
-        $usuario->update($data);
+        $usuario = DB::table('Usuario')
+            ->where('email', $usuario->email)
+            ->update($data);
         return $usuario;
     }
 
