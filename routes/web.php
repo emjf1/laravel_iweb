@@ -31,11 +31,12 @@ Route::put('/salas/{id}', 'SalaController@editarSala'); //Middleware
 Route::delete('/salas/{id}', 'SalaController@eliminarSala'); //Middleware
 
 // Habitacion
-Route::get('/habitaciones', 'HabitacionController@listaHabitacion');
-Route::get('/habitaciones/{id}', 'HabitacionController@detalleHabitacion');
-Route::get('/habitaciones/{id}', 'HabitacionController@listaFotoHabitacion');
-Route::put('/habitaciones/{id}', 'HabitacionController@editarHabitacion'); //Middleware
-Route::delete('/habitaciones/{id}', 'HabitacionController@eliminarHabitacion'); //Middleware
+Route::get('/habitaciones', 'HabitacionController@listaHabitacion')->name('habitaciones.lista');
+Route::get('/habitaciones/{id}', 'HabitacionController@detalleHabitacion')->name('habitaciones.detalle');
+Route::get('/habitaciones/{id}/fotos', 'HabitacionController@fotosHabitacion')->name('habitaciones.detalle.fotos');
+Route::post('/habitaciones', 'HabitacionController@crearHabitacion')->name('habitaciones.crear'); 
+Route::put('/habitaciones/{id}', 'HabitacionController@editarHabitacion')->name('habitaciones.editar'); 
+Route::delete('/habitaciones/{id}', 'HabitacionController@eliminarHabitacion')->name('habitaciones.borrar'); 
 
 // Usuario
 Route::get('/login', 'UsuarioController@login'); //Middleware

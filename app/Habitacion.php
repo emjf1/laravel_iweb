@@ -46,26 +46,34 @@ class Habitacion extends Model
         return $habitacion;
     }
 
-    public function actualizar(array $data, Habitacion $habitacion){
-        $habitacionActualizada = DB::table('Habitacion')->where('codigo', $habitacion->codigo)->first();
-        $habitacionActualizada->update($data);
+    public static function actualizar(array $data, Habitacion $habitacion){
+       /* $habitacionActualizada = DB::table('Habitacion')->where('codigo', $habitacion->codigo)->first();
+        $habitacionActualizada->update($data); */
+        DB::table('Habitacion')
+            ->where('codigo', $habitacion->codigo)
+            ->update($data);
+
+        $habitacionActualizada = DB::table('Habitacion')->where('codigo', $data['codigo'])->first();
         return $habitacionActualizada;
     }
 
-    public function borrar(array $data, Habitacion $habitacion){
-        if($habitacion->delete($data))
+    public static function borrar(Habitacion $habitacion){
+        /*if($habitacion->delete())*/
+        if(DB::table('Habitacion')->where('codigo', $habitacion->codigo)->delete())
             return true;
         else
             return false;
     }
 
-    public static function leer(Habitacion $data){
-        $habitacion = Habitacion::where('codigo', '=', $data->codigo);
-        return $habitacion;
-    }
-
     public static function obtenerImagenHabitacion(Habitacion $data){
-        $habitacion = Habitacion::where('codigo', '=', $data->codigo);
-        return $habitacion->habitacionImagen;
+       /* $habitacion = Habitacion::where('codigo', '=', $data->codigo);
+       return $habitacion->habitacionImagen;*/
+
+       return DB::table('Habitacion')
+            ->join('Imagen', 'Habitacion.codigo', '=', 'Imagen.habitacion')
+            ->where('Habitacion.codigo',$data->codigo)
+            ->select('Imagen.codigo','Imagen.url')
+            ->get();
+        
     }
 }
