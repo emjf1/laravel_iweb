@@ -47,7 +47,7 @@ class Sala_conferencia extends Model
             return false;
     }
 
-    public static function leer(Sala_conferencia $data){
+    public static function mostrarSala(Sala_conferencia $data){
         $sala = Sala_conferencia::where('codigo', '=', $data->codigo);
         return $sala;
     }
