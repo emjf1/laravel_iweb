@@ -16,7 +16,7 @@ class Tipo_usuario extends Model
         return $this->hasMany('App\Usuario');
     }
 
-        public static function crear(array $data){
+        public static function crearTipo_usuario(array $data){
             $tusuario = new Tipo_usuario();
             $tusuario->codigo = $data['codigo'];
             $tusuario->tipo = $data['tipo'];
@@ -24,19 +24,19 @@ class Tipo_usuario extends Model
             return $tusuario;
         }
 
-        public function actualizar(array $data, Tipo_usuario $tuser){
+        public function actualizarTipo_usuario(array $data, Tipo_usuario $tuser){
             $tuser->update($data);
             return $tuser;
         }
 
-        public function borrar(array $data, Tipo_usuario $tusuario){
+        public function borrarTipo_usuario(array $data, Tipo_usuario $tusuario){
             if($tusuario->delete($data))
                 return true;
             else
                 return false;
         }
 
-        public static function leer(Tipo_usuario $data){
+        public static function leerTipo_usuario(Tipo_usuario $data){
             $tusuario = Tipo_usuario::where('tipo', '=', $data->tipo);
             return $tusuario;
         }
