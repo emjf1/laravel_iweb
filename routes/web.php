@@ -21,8 +21,8 @@ Route::get('/reservas', 'ReservaController@listaReserva')->name('reservas.lista'
 Route::get('/reservas/{id}', 'ReservaController@detalleReserva')->name('reservas.detalles');
 Route::get('/perfil/reservas', 'ReservaController@listaReservasUsuario')->name('reservas.usuario.lista');
 Route::post('/reservas', 'ReservaController@crearReserva')->name('reservas.crear');
-Route::put('/reservas/{id}', 'ReservaController@editarReserva')>name('reservas.editar');
-Route::delete('/reservas/{id}', 'ReservaController@eliminarReserva')>name('reservas.borrar');
+Route::put('/reservas/{id}', 'ReservaController@editarReserva')->name('reservas.editar');
+Route::delete('/reservas/{id}', 'ReservaController@eliminarReserva')->name('reservas.borrar');
 
 // Sala
 Route::get('/salas', 'SalaController@listaSala')->name('salas.lista');
@@ -51,5 +51,10 @@ Route::delete('/usuarios/{userID}', 'UsuarioController@eliminarUsuario')->name('
 
 
 // Tipo de Usuario
+Route::get('/tipousuario', 'TipoUsuarioController@listaTipoUsuario')->name('tipousuario.lista');
+Route::get('/tipousuario/{id}', 'TipoUsuarioController@detalleTipoUsuario')->name('tipousuario.detalle');
+Route::post('/tipousuario', 'TipoUsuarioController@crearTipoUsuario')->name('tipousuario.crear');
+Route::put('/tipousuario/{id}', 'TipoUsuarioController@editarTipoUsuario')->name('tipousuario.editar');
+Route::delete('/tipousuario/{id}', 'TipoUsuarioController@eliminarTipoUsuario')->name('tipousuario.borrar');
 
 // Regimen
