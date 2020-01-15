@@ -10,7 +10,7 @@ class Regimen extends Model
 
     public $timestamps = false;
 
-    protected $fillable = array('codigo', 'regimen', 'porcentaje');
+    protected $fillable = array('codigo', 'regimen', 'porcentaje', 'es_sala');
 
     public function reservas(){
         return $this->hasMany('App\Reserva');
@@ -26,6 +26,7 @@ class Regimen extends Model
         $regimen->codigo = $data['codigo'];
         $regimen->regimen = $data['regimen'];
         $regimen->porcentaje = $data['porcentaje'];
+        $regimen->es_sala = $data['es_sala'];
         $regimen->save();
         return $regimen;
     }

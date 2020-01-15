@@ -32,6 +32,16 @@ class Reserva extends Model
             return $this->belongsTo('App\Habitacion');
     }
 
+    public static function listarReserva(){
+        $reservas = Reserva::All();
+        return $reservas;
+    }
+
+    public static function listarReservaUsuario(String $usuario){
+        $reservas = DB::table('Reserva')->where('usuario', $usuario)->get();
+        return $reservas;
+    }
+
     public static function crearReserva(array $data){
         $reserva = new Reserva();
         $reserva->codigo = $data['codigo'];
