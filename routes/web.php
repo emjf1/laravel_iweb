@@ -14,14 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/prueba', 'PruebaController@list');
 
-// Regimen
-Route::get('/regimenes', 'RegimenController@listaRegimen');
 
 // Reserva
-Route::get('/reservas', 'ReservaController@listaReserva'); //Middleware
-Route::get('/usuario/{userID}/reservas', 'ReservaController@listaReservasUsuario'); //Middleware
+Route::get('/reservas', 'ReservaController@listaReserva')->name('reservas.lista'); 
+Route::get('/reservas/{id}', 'ReservaController@detalleReserva')->name('reservas.detalles'); 
+Route::get('/perfil/reservas', 'ReservaController@listaReservasUsuario')->name('reservas.usuario.lista');
+Route::post('/reservas', 'ReservaController@crearReserva')->name('reservas.crear'); 
+Route::put('/reservas/{id}', 'ReservaController@editarReserva')>name('reservas.editar'); 
+Route::delete('/reservas/{id}', 'ReservaController@eliminarReserva')>name('reservas.borrar');
 
 // Sala
 Route::get('/salas', 'SalaController@listaSala')->name('salas.lista');
@@ -50,10 +51,5 @@ Route::delete('/usuarios/{userID}', 'UsuarioController@eliminarUsuario')->name('
 
 
 // Tipo de Usuario
-Route::get('/tipousuario', 'TipoUsuarioController@listarTipoUsuario');
-Route::get('/blanco', 'TipoUsuarioController@blanco');
-Route::post('/tipousuario', 'TipoUsuarioController@crearTipoUsuario');
-Route::get('/tipousuario/{id}', 'TipoUsuarioController@detalleTipoUsuario');
-Route::put('/tipousuario/{id}', 'TipoUsuarioController@editarTipoUsuario');
-Route::delete('/tipousuario/{id}', 'TipoUsuarioController@eliminarTipoUsuario');
 
+// Regimen
