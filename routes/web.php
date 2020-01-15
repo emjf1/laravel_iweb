@@ -38,6 +38,7 @@ Route::delete('/regimen/{id}', 'RegimenController@eliminarRegimen')->name('regim
 
 // Reserva
 Route::get('/reservas', 'ReservaController@listaReserva')->name('reservas.lista');
+Route::get('/reservasusuario', 'ReservaController@listaReservaUsuario')->name('reservas.lista.usuario');
 Route::get('/reservas/{id}', 'ReservaController@detalleReserva')->name('reservas.detalles');
 Route::get('/perfil/reservas', 'ReservaController@listaReservasUsuario')->name('reservas.usuario.lista');
 Route::post('/reservas', 'ReservaController@crearReserva')->name('reservas.crear');

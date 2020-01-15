@@ -12,6 +12,13 @@ class ReservaController extends Controller
         return response()->json($resultado);
     }
 
+    public function listaReservaUsuario()
+    {
+        $usuario = "prueba@email.com";
+        $resultado = Reserva::listarReservaUsuario($usuario);
+        return response()->json($resultado);
+    }
+
     public function detalleReserva($id)
     {
         $data = new Reserva();
