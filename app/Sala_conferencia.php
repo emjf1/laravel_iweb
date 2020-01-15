@@ -35,7 +35,7 @@ class Sala_conferencia extends Model
         return $sala;
     }
 
-    public function actualizar(array $data, Sala_conferencia $sala){
+    public function actualizarSala(array $data, Sala_conferencia $sala){
         $sala = DB::table('Sala_conferencia')->where('codigo', $sala->codigo)->update($data);
         return $sala;
     }
