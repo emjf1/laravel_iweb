@@ -35,6 +35,11 @@ class Usuario extends Model
         return $usuario;
     }
 
+    public static function mostrarUsuario(Usuario $data){
+        $usuario = DB::table('Usuario')->where('email', $data->email)->first();
+        return $usuario;
+    }
+
     public function actualizar(array $data, Usuario $usuario){
         $usuario->update($data);
         return $usuario;
