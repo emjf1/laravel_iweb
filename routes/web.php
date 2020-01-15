@@ -40,11 +40,13 @@ Route::put('/habitaciones/{id}', 'HabitacionController@editarHabitacion')->name(
 Route::delete('/habitaciones/{id}', 'HabitacionController@eliminarHabitacion')->name('habitaciones.borrar'); 
 
 // Usuario
-Route::get('/login', 'UsuarioController@login'); //Middleware
-Route::get('/registro', 'UsuarioController@registro'); //Middleware
-Route::get('/usuario/{userID}', 'UsuarioController@infoUsuario'); //Middleware
-Route::put('/usuario/{userID}', 'UsuarioController@editarUsuario'); //Middleware
-Route::delete('/usuario/{userID}', 'UsuarioController@eliminarUsuario'); //Middleware
+Route::get('/login', 'UsuarioController@login')->name('usuarios.login'); 
+Route::get('/registro', 'UsuarioController@registro')->name('usuarios.registro'); 
+Route::get('/usuarios', 'UsuarioController@listaUsuario')->name('usuarios.lista');
+Route::get('/usuarios/{userID}', 'UsuarioController@infoUsuario')->name('usuarios.detalle'); 
+Route::post('/usuarios', 'UsuarioController@crearUsuario')->name('usuarios.crear'); 
+Route::put('/usuarios/{userID}', 'UsuarioController@editarUsuario')->name('usuarios.editar'); 
+Route::delete('/usuarios/{userID}', 'UsuarioController@eliminarUsuario')->name('usuarios.borrar'); 
 
 
 // Tipo de Usuario
@@ -54,3 +56,4 @@ Route::post('/tipousuario', 'TipoUsuarioController@crearTipoUsuario');
 Route::get('/tipousuario/{id}', 'TipoUsuarioController@detalleTipoUsuario');
 Route::put('/tipousuario/{id}', 'TipoUsuarioController@editarTipoUsuario');
 Route::delete('/tipousuario/{id}', 'TipoUsuarioController@eliminarTipoUsuario');
+
