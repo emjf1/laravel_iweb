@@ -37,7 +37,7 @@ class Imagen extends Model
             return false;
     }
 
-    public static function leerImagen(Imagen $data){
+    public static function mostrarImagen(Imagen $data){
         $imagen = Imagen::where('codigo', '=', $data->codigo);
         return $imagen;
     }
