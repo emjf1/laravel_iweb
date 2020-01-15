@@ -24,11 +24,12 @@ Route::get('/reservas', 'ReservaController@listaReserva'); //Middleware
 Route::get('/usuario/{userID}/reservas', 'ReservaController@listaReservasUsuario'); //Middleware
 
 // Sala
-Route::get('/salas', 'SalaController@listaSala');
-Route::get('/salas/{id}', 'SalaController@detalleSala');
-Route::get('/salas/{id}/imagenes', 'SalaController@listaFotoSala');
-Route::put('/salas/{id}', 'SalaController@editarSala'); //Middleware
-Route::delete('/salas/{id}', 'SalaController@eliminarSala'); //Middleware
+Route::get('/salas', 'SalaController@listaSala')->name('salas.lista');
+Route::get('/salas/{id}', 'SalaController@detalleSala')->name('salas.detalle');
+Route::get('/salas/{id}/fotos', 'SalaController@fotosSala')->name('salas.detalle.fotos');
+Route::post('/salas', 'SalaController@crearSala')->name('salas.crear');
+Route::put('/salas/{id}', 'SalaController@editarSala')->name('salas.editar'); 
+Route::delete('/salas/{id}', 'SalaController@eliminarSala')->name('salas.borrar'); 
 
 // Habitacion
 Route::get('/habitaciones', 'HabitacionController@listaHabitacion')->name('habitaciones.lista');
