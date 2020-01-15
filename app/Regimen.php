@@ -16,7 +16,7 @@ class Regimen extends Model
         return $this->hasMany('App\Reserva');
     }
 
-    public static function crear(array $data){
+    public static function crearRegimen(array $data){
         $regimen = new Regimen();
         $regimen->codigo = $data['codigo'];
         $regimen->regimen = $data['regimen'];
@@ -25,19 +25,19 @@ class Regimen extends Model
         return $regimen;
     }
 
-    public function actualizar(array $data, Regimen $regimen){
+    public function actualizarRegimen(array $data, Regimen $regimen){
         $regimen->update($data);
         return $regimen;
     }
 
-    public function borrar(array $data, Regimen $regimen){
+    public function borrarRegimen(array $data, Regimen $regimen){
         if($regimen->delete($data))
             return true;
         else
             return false;
     }
 
-    public static function leer(Regimen $data){
+    public static function leerRegimen(Regimen $data){
         $regimen = Regimen::where('codigo', '=', $data->codigo);
         return $regimen;
     }
