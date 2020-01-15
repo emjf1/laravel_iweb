@@ -60,19 +60,19 @@ Route::post('/temporada', 'TemporadaController@crearTemporada')->name('temporada
 Route::put('/temporada/{id}', 'TemporadaController@editarTemporada')->name('temporada.editar');
 Route::delete('/temporada/{id}', 'TemporadaController@eliminarTemporada')->name('temporada.borrar');
 
-// Tipo de Usuario
-Route::get('/tipousuario', 'TipoUsuarioController@listaTipoUsuario')->name('tipousuario.lista');
-Route::get('/tipousuario/{id}', 'TipoUsuarioController@detalleTipoUsuario')->name('tipousuario.detalle');
-Route::post('/tipousuario', 'TipoUsuarioController@crearTipoUsuario')->name('tipousuario.crear');
-Route::put('/tipousuario/{id}', 'TipoUsuarioController@editarTipoUsuario')->name('tipousuario.editar');
-Route::delete('/tipousuario/{id}', 'TipoUsuarioController@eliminarTipoUsuario')->name('tipousuario.borrar');
-
 // Tipo de Reserva
 Route::get('/tiporeserva', 'TipoReservaController@listaTipoReserva')->name('tiporeserva.lista');
 Route::get('/tiporeserva/{id}', 'TipoReservaController@detalleTipoReserva')->name('tiporeserva.detalle');
 Route::post('/tiporeserva', 'TipoReservaController@crearTipoReserva')->name('tiporeserva.crear');
 Route::put('/tiporeserva/{id}', 'TipoReservaController@editarTipoReserva')->name('tiporeserva.editar');
 Route::delete('/tiporeserva/{id}', 'TipoReservaController@eliminarTipoReserva')->name('tiporeserva.borrar');
+
+// Tipo de Usuario
+Route::get('/tipousuario', 'TipoUsuarioController@listaTipoUsuario')->name('tipousuario.lista');
+Route::get('/tipousuario/{id}', 'TipoUsuarioController@detalleTipoUsuario')->name('tipousuario.detalle');
+Route::post('/tipousuario', 'TipoUsuarioController@crearTipoUsuario')->name('tipousuario.crear');
+Route::put('/tipousuario/{id}', 'TipoUsuarioController@editarTipoUsuario')->name('tipousuario.editar');
+Route::delete('/tipousuario/{id}', 'TipoUsuarioController@eliminarTipoUsuario')->name('tipousuario.borrar');
 
 // Usuario
 Route::get('/login', 'UsuarioController@login')->name('usuarios.login');
