@@ -32,7 +32,7 @@ class Reserva extends Model
             return $this->belongsTo('App\Habitacion');
     }
 
-    public static function crear(array $data){
+    public static function crearReserva(array $data){
         $reserva = new Reserva();
         $reserva->codigo = $data['codigo'];
         $reserva->fecha_inicio = $data['fecha_inicio'];
@@ -47,19 +47,19 @@ class Reserva extends Model
         return $reserva;
     }
 
-    public function actualizar(array $data, Reserva $reserva){
+    public function actualizarReserva(array $data, Reserva $reserva){
         $reserva->update($data);
         return $reserva;
     }
 
-    public function borrar(array $data, Reserva $reserva){
+    public function borrarReserva(array $data, Reserva $reserva){
         if($reserva->delete($data))
             return true;
         else
             return false;
     }
 
-    public static function leer(Reserva $data){
+    public static function leerReserva(Reserva $data){
         $reserva = Reserva::where('codigo', '=', $data->codigo);
         return $reserva;
     }
