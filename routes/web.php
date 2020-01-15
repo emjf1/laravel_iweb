@@ -58,3 +58,8 @@ Route::put('/tipousuario/{id}', 'TipoUsuarioController@editarTipoUsuario')->name
 Route::delete('/tipousuario/{id}', 'TipoUsuarioController@eliminarTipoUsuario')->name('tipousuario.borrar');
 
 // Regimen
+Route::get('/regimen', 'RegimenController@listaRegimen')->name('regimen.lista');
+Route::get('/regimen/{id}', 'RegimenController@detalleRegimen')->name('regimen.detalle');
+Route::post('/regimen', 'RegimenController@crearRegimen')->name('regimen.crear');
+Route::put('/regimen/{id}', 'RegimenController@editarRegimen')->name('regimen.editar');
+Route::delete('/regimen/{id}', 'RegimenController@eliminarRegimen')->name('regimen.borrar');
