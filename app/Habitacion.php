@@ -31,7 +31,7 @@ class Habitacion extends Model
         return $habitacion;
     }
 
-    public static function crear(array $data){
+    public static function crearHabitacion(array $data){
         $habitacion = new Habitacion();
         $habitacion->codigo = $data['codigo'];
         $habitacion->descripcion = $data['descripcion'];
@@ -46,7 +46,7 @@ class Habitacion extends Model
         return $habitacion;
     }
 
-    public static function actualizar(array $data, Habitacion $habitacion){
+    public static function actualizarHabitacion(array $data, Habitacion $habitacion){
        /* $habitacionActualizada = DB::table('Habitacion')->where('codigo', $habitacion->codigo)->first();
         $habitacionActualizada->update($data); */
         DB::table('Habitacion')
@@ -57,7 +57,7 @@ class Habitacion extends Model
         return $habitacionActualizada;
     }
 
-    public static function borrar(Habitacion $habitacion){
+    public static function borrarHabitacion(Habitacion $habitacion){
         /*if($habitacion->delete())*/
         if(DB::table('Habitacion')->where('codigo', $habitacion->codigo)->delete())
             return true;
