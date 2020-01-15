@@ -47,8 +47,8 @@ class Usuario extends Model
         return $usuario;
     }
 
-    public function borrarUsuario(array $data, Usuario $usuario){
-        if(DB::table('Usuario')->where('email', $usuario->email)->delete())
+    public function borrarUsuario(Usuario $usuario){
+        if(DB::table('Usuario')->where('email', $usuario['email'])->delete())
             return true;
         else
             return false;
