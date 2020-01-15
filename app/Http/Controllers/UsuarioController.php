@@ -9,7 +9,7 @@ class UsuarioController extends Controller
 {
     public function login()
     {
-        ///    
+        ///
     }
 
     public function registro()
@@ -23,10 +23,10 @@ class UsuarioController extends Controller
         return response()->json($resultado);
     }
 
-    public function infoUsuario($id)
+    public function infoUsuario()
     {
         $data = new Usuario();
-        $data->email = $id;
+        //$data->email = $id;
 
         $resultado =  Usuario::mostrarUsuario($data);
         return response()->json($resultado);
@@ -55,7 +55,7 @@ class UsuarioController extends Controller
     {
         $usuario = new Usuario();
         $usuario->codigo = $id;
-  
+
         $resultado = Usuario::borrarUsuario($usuario);
         return response()->json($resultado);
     }
