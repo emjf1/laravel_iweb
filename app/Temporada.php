@@ -35,7 +35,7 @@ class Temporada extends Model
             return false;
     }
 
-    public static function leerTemporada(Temporada $data){
+    public static function mostrarTemporada(Temporada $data){
         $temporada = Temporada::where('id', '=', $data->id);
         return $temporada;
     }

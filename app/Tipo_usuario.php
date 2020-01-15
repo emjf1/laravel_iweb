@@ -36,7 +36,7 @@ class Tipo_usuario extends Model
                 return false;
         }
 
-        public static function leerTipo_usuario(Tipo_usuario $data){
+        public static function mostrarTipo_usuario(Tipo_usuario $data){
             $tusuario = Tipo_usuario::where('tipo', '=', $data->tipo);
             return $tusuario;
         }

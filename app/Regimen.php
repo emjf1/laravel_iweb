@@ -37,7 +37,7 @@ class Regimen extends Model
             return false;
     }
 
-    public static function leerRegimen(Regimen $data){
+    public static function mostrarRegimen(Regimen $data){
         $regimen = Regimen::where('codigo', '=', $data->codigo);
         return $regimen;
     }

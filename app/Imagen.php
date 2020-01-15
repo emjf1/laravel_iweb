@@ -30,14 +30,14 @@ class Imagen extends Model
         return $imagen;
     }
 
-    public function borrarImagen(array $data, Imagen $imagen){
+    public function borrarImagen(Imagen $imagen){
         if($imagen->delete($data))
             return true;
         else
             return false;
     }
 
-    public static function leerImagen(Imagen $data){
+    public static function mostrarImagen(Imagen $data){
         $imagen = Imagen::where('codigo', '=', $data->codigo);
         return $imagen;
     }
