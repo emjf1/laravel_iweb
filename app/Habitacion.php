@@ -66,14 +66,11 @@ class Habitacion extends Model
     }
 
     public static function obtenerImagenHabitacion(Habitacion $data){
-       /* $habitacion = Habitacion::where('codigo', '=', $data->codigo);
-       return $habitacion->habitacionImagen;*/
-
        return DB::table('Habitacion')
             ->join('Imagen', 'Habitacion.codigo', '=', 'Imagen.habitacion')
             ->where('Habitacion.codigo',$data->codigo)
             ->select('Imagen.codigo','Imagen.url')
             ->get();
-        
+
     }
 }

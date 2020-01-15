@@ -16,6 +16,11 @@ class Sala_conferencia extends Model
         return $this->hasMany('App\Reserva');
     }
 
+    public static function listarSalas(){
+        $salas = Sala_conferencia::All();
+        return $salas;
+    }
+
     public static function crear(array $data){
         $sala = new Sala_conferencia();
         $sala->codigo = $data['codigo'];
@@ -30,19 +35,19 @@ class Sala_conferencia extends Model
         return $sala;
     }
 
-    public function actualizar(array $data, Sala_conferencia $sala){
-        $sala->update($data);
+    public function actualizarSala(array $data, Sala_conferencia $sala){
+        $sala = DB::table('Sala_conferencia')->where('codigo', $sala->codigo)->update($data);
         return $sala;
     }
 
-    public function borrar(array $data, Sala_conferencia $sala){
-        if($sala->delete($data))
+    public function borrarSala(array $data, Sala_conferencia $sala){
+        if(DB::table('Sala_conferencia')->where('codigo', $sala->codigo)->delete())
             return true;
         else
             return false;
     }
 
-    public static function leer(Sala_conferencia $data){
+    public static function mostrarSala(Sala_conferencia $data){
         $sala = Sala_conferencia::where('codigo', '=', $data->codigo);
         return $sala;
     }
