@@ -3,14 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Sala_conferencia extends Model
+
 {
     protected $table = "Sala_conferencia";
 
     public $timestamps = false;
 
-    protected $fillable = array('codigo', 'descripcion', 'proyector', 'microfono', 'pizarra', 'mesas', 'asientos', 'puntuacion');
+    protected $fillable = array('codigo', 'descripcion', 'proyector', 'microfono', 'pizarra', 'mesas', 'asientos', 'puntuacion', 'precio');
 
     public function reservas(){
         return $this->hasMany('App\Reserva');
@@ -31,16 +33,18 @@ class Sala_conferencia extends Model
         $sala->mesas = $data['mesas'];
         $sala->asientos = $data['asientos'];
         $sala->puntuacion = $data['puntuacion'];
+        $sala->precio = $data['precio'];
         $sala->save();
         return $sala;
     }
 
-    public function actualizarSala(array $data, Sala_conferencia $sala){
-        $sala = DB::table('Sala_conferencia')->where('codigo', $sala->codigo)->update($data);
-        return $sala;
+    public static function actualizarSala(array $data, Sala_conferencia $sala){
+        DB::table('Sala_conferencia')->where('codigo', $sala->codigo)->update($data);
+        $salaActualizada = DB::table('Sala_conferencia')->where('codigo', $data['codigo'])->first();
+        return $salaActualizada;
     }
 
-    public function borrarSala(array $data, Sala_conferencia $sala){
+    public static function borrarSala(Sala_conferencia $sala){
         if(DB::table('Sala_conferencia')->where('codigo', $sala->codigo)->delete())
             return true;
         else
@@ -48,7 +52,7 @@ class Sala_conferencia extends Model
     }
 
     public static function mostrarSala(Sala_conferencia $data){
-        $sala = Sala_conferencia::where('codigo', '=', $data->codigo);
+        $sala = Sala_conferencia::where('codigo', '=', $data->codigo)->first();
         return $sala;
     }
 }

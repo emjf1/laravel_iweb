@@ -14,7 +14,7 @@ class HabitacionController extends Controller
     }
 
     public function detalleHabitacion($id)
-    {   
+    {
         $data = new Habitacion();
         $data->codigo = $id;
 
@@ -23,27 +23,27 @@ class HabitacionController extends Controller
     }
 
     public function fotosHabitacion($id)
-    {   
+    {
         $data = new Habitacion();
         $data->codigo = $id;
-        
+
         $resultado = Habitacion::obtenerImagenHabitacion($data);
         return ($resultado);
     }
 
     public function eliminarHabitacion($id)
-    {   
+    {
         $habitacion = new Habitacion();
         $habitacion->codigo = $id;
-  
-        $resultado = Habitacion::borrar($habitacion);
+
+        $resultado = Habitacion::borrarHabitacion($habitacion);
         return response()->json($resultado);
     }
 
     public function crearHabitacion(){
         $data = request()->all();
 
-        $resultado = Habitacion::crear($data);
+        $resultado = Habitacion::crearHabitacion($data);
         return response()->json($resultado);
     }
 
@@ -54,7 +54,7 @@ class HabitacionController extends Controller
         $habitacion = new Habitacion();
         $habitacion->codigo = $id;
 
-        $resultado = Habitacion::actualizar($data, $habitacion);
+        $resultado = Habitacion::actualizarHabitacion($data, $habitacion);
         return response()->json($resultado);
     }
 }

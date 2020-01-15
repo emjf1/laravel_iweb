@@ -47,8 +47,6 @@ class Habitacion extends Model
     }
 
     public static function actualizarHabitacion(array $data, Habitacion $habitacion){
-       /* $habitacionActualizada = DB::table('Habitacion')->where('codigo', $habitacion->codigo)->first();
-        $habitacionActualizada->update($data); */
         DB::table('Habitacion')
             ->where('codigo', $habitacion->codigo)
             ->update($data);
