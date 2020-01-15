@@ -15,6 +15,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Habitacion
+Route::get('/habitaciones', 'HabitacionController@listaHabitacion')->name('habitaciones.lista');
+Route::get('/habitaciones/{id}', 'HabitacionController@detalleHabitacion')->name('habitaciones.detalle');
+Route::get('/habitaciones/{id}/fotos', 'HabitacionController@fotosHabitacion')->name('habitaciones.detalle.fotos');
+Route::post('/habitaciones', 'HabitacionController@crearHabitacion')->name('habitaciones.crear');
+Route::put('/habitaciones/{id}', 'HabitacionController@editarHabitacion')->name('habitaciones.editar');
+Route::delete('/habitaciones/{id}', 'HabitacionController@eliminarHabitacion')->name('habitaciones.borrar');
+
+// Imagen
+Route::get('/imagen', 'ImagenController@listaImagen')->name('imagen.lista');
+Route::get('/imagen/{id}', 'ImagenController@detalleImagen')->name('imagen.detalle');
+Route::post('/imagen', 'ImagenController@crearImagen')->name('imagen.crear');
+Route::put('/imagen/{id}', 'ImagenController@editarImagen')->name('imagen.editar');
+Route::delete('/imagen/{id}', 'ImagenController@eliminarImagen')->name('imagen.borrar');
+
+// Regimen
+Route::get('/regimen', 'RegimenController@listaRegimen')->name('regimen.lista');
+Route::get('/regimen/{id}', 'RegimenController@detalleRegimen')->name('regimen.detalle');
+Route::post('/regimen', 'RegimenController@crearRegimen')->name('regimen.crear');
+Route::put('/regimen/{id}', 'RegimenController@editarRegimen')->name('regimen.editar');
+Route::delete('/regimen/{id}', 'RegimenController@eliminarRegimen')->name('regimen.borrar');
 
 // Reserva
 Route::get('/reservas', 'ReservaController@listaReserva')->name('reservas.lista');
@@ -32,13 +53,12 @@ Route::post('/salas', 'SalaController@crearSala')->name('salas.crear');
 Route::put('/salas/{id}', 'SalaController@editarSala')->name('salas.editar');
 Route::delete('/salas/{id}', 'SalaController@eliminarSala')->name('salas.borrar');
 
-// Habitacion
-Route::get('/habitaciones', 'HabitacionController@listaHabitacion')->name('habitaciones.lista');
-Route::get('/habitaciones/{id}', 'HabitacionController@detalleHabitacion')->name('habitaciones.detalle');
-Route::get('/habitaciones/{id}/fotos', 'HabitacionController@fotosHabitacion')->name('habitaciones.detalle.fotos');
-Route::post('/habitaciones', 'HabitacionController@crearHabitacion')->name('habitaciones.crear');
-Route::put('/habitaciones/{id}', 'HabitacionController@editarHabitacion')->name('habitaciones.editar');
-Route::delete('/habitaciones/{id}', 'HabitacionController@eliminarHabitacion')->name('habitaciones.borrar');
+// Tipo de Usuario
+Route::get('/tipousuario', 'TipoUsuarioController@listaTipoUsuario')->name('tipousuario.lista');
+Route::get('/tipousuario/{id}', 'TipoUsuarioController@detalleTipoUsuario')->name('tipousuario.detalle');
+Route::post('/tipousuario', 'TipoUsuarioController@crearTipoUsuario')->name('tipousuario.crear');
+Route::put('/tipousuario/{id}', 'TipoUsuarioController@editarTipoUsuario')->name('tipousuario.editar');
+Route::delete('/tipousuario/{id}', 'TipoUsuarioController@eliminarTipoUsuario')->name('tipousuario.borrar');
 
 // Usuario
 Route::get('/login', 'UsuarioController@login')->name('usuarios.login');
@@ -48,18 +68,3 @@ Route::get('/perfil', 'UsuarioController@infoUsuario')->name('usuarios.detalle')
 Route::post('/usuarios', 'UsuarioController@crearUsuario')->name('usuarios.crear');
 Route::put('/usuarios/{userID}', 'UsuarioController@editarUsuario')->name('usuarios.editar');
 Route::delete('/usuarios/{userID}', 'UsuarioController@eliminarUsuario')->name('usuarios.borrar');
-
-
-// Tipo de Usuario
-Route::get('/tipousuario', 'TipoUsuarioController@listaTipoUsuario')->name('tipousuario.lista');
-Route::get('/tipousuario/{id}', 'TipoUsuarioController@detalleTipoUsuario')->name('tipousuario.detalle');
-Route::post('/tipousuario', 'TipoUsuarioController@crearTipoUsuario')->name('tipousuario.crear');
-Route::put('/tipousuario/{id}', 'TipoUsuarioController@editarTipoUsuario')->name('tipousuario.editar');
-Route::delete('/tipousuario/{id}', 'TipoUsuarioController@eliminarTipoUsuario')->name('tipousuario.borrar');
-
-// Regimen
-Route::get('/regimen', 'RegimenController@listaRegimen')->name('regimen.lista');
-Route::get('/regimen/{id}', 'RegimenController@detalleRegimen')->name('regimen.detalle');
-Route::post('/regimen', 'RegimenController@crearRegimen')->name('regimen.crear');
-Route::put('/regimen/{id}', 'RegimenController@editarRegimen')->name('regimen.editar');
-Route::delete('/regimen/{id}', 'RegimenController@eliminarRegimen')->name('regimen.borrar');
