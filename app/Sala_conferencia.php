@@ -40,8 +40,8 @@ class Sala_conferencia extends Model
         return $sala;
     }
 
-    public function borrar(array $data, Sala_conferencia $sala){
-        if($sala->delete($data))
+    public function borrarSala(array $data, Sala_conferencia $sala){
+        if(DB::table('Sala_conferencia')->where('codigo', $sala->codigo)->delete())
             return true;
         else
             return false;
