@@ -59,7 +59,7 @@ class Reserva extends Model
             return false;
     }
 
-    public static function leerReserva(Reserva $data){
+    public static function mostrarReserva(Reserva $data){
         $reserva = Reserva::where('codigo', '=', $data->codigo);
         return $reserva;
     }

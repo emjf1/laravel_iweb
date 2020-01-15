@@ -35,7 +35,7 @@ class Tipo_reserva extends Model
                 return false;
         }
 
-        public static function leerTipo_reserva(Tipo_reserva $data){
+        public static function mostrarTipo_reserva(Tipo_reserva $data){
             $treserva = Tipo_reserva::where('codigo', '=', $data->codigo);
             return $treserva;
         }

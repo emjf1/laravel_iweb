@@ -30,7 +30,7 @@ class Imagen extends Model
         return $imagen;
     }
 
-    public function borrarImagen(array $data, Imagen $imagen){
+    public function borrarImagen(Imagen $imagen){
         if($imagen->delete($data))
             return true;
         else
