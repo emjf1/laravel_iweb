@@ -48,12 +48,16 @@ class Reserva extends Model
     }
 
     public function actualizarReserva(array $data, Reserva $reserva){
-        $reserva->update($data);
-        return $reserva;
+        DB::table('Reserva')
+            ->where('codigo', $reserva->codigo)
+            ->update($data);
+
+        $reservaActualizada = DB::table('Reserva')->where('codigo', $data['codigo'])->first();
+        return $reservaActualizada;
     }
 
-    public function borrarReserva(array $data, Reserva $reserva){
-        if($reserva->delete($data))
+    public function borrarReserva(Reserva $reserva){
+        if(DB::table('Reserva')->where('codigo', $reserva->codigo)->delete())
             return true;
         else
             return false;

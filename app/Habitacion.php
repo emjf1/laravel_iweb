@@ -56,7 +56,6 @@ class Habitacion extends Model
     }
 
     public static function borrarHabitacion(Habitacion $habitacion){
-        /*if($habitacion->delete())*/
         if(DB::table('Habitacion')->where('codigo', $habitacion->codigo)->delete())
             return true;
         else

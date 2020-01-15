@@ -24,12 +24,16 @@ class Tipo_reserva extends Model
         }
 
         public function actualizarTipo_reserva(array $data, Tipo_reserva $treserva){
-            $treserva->update($data);
-            return $treserva;
+            DB::table('Tipo_reserva')
+                ->where('codigo', $treserva->codigo)
+                ->update($data);
+
+            $treservaActualizada = DB::table('Tipo_reserva')->where('codigo', $data['codigo'])->first();
+            return $treservaActualizada;
         }
 
-        public function borrarTipo_reserva(array $data, Tipo_reserva $treserva){
-            if($treserva->delete($data))
+        public function borrarTipo_reserva(Tipo_reserva $treserva){
+            if(DB::table('Tipo_reserva')->where('codigo', $treserva->codigo)->delete())
                 return true;
             else
                 return false;

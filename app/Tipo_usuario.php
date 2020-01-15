@@ -25,12 +25,16 @@ class Tipo_usuario extends Model
         }
 
         public function actualizarTipo_usuario(array $data, Tipo_usuario $tuser){
-            $tuser->update($data);
-            return $tuser;
+            DB::table('Tipo_usuario')
+                ->where('codigo', $tuser->codigo)
+                ->update($data);
+
+            $tuserActualizada = DB::table('Tipo_usuario')->where('codigo', $data['codigo'])->first();
+            return $tuserActualizada;
         }
 
-        public function borrarTipo_usuario(array $data, Tipo_usuario $tusuario){
-            if($tusuario->delete($data))
+        public function borrarTipo_usuario(Tipo_usuario $tusuario){
+            if(DB::table('Tipo_usuario')->where('codigo', $tusuario->codigo)->delete())
                 return true;
             else
                 return false;

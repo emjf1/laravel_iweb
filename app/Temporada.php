@@ -24,12 +24,16 @@ class Temporada extends Model
     }
 
     public function actualizarTemporada(array $data, Temporada $temporada){
-        $temporada->update($data);
-        return $temporada;
+        DB::table('Temporada')
+            ->where('codigo', $temporada->codigo)
+            ->update($data);
+
+        $temporadaActualizada = DB::table('Temporada')->where('codigo', $data['codigo'])->first();
+        return $temporadaActualizada;
     }
 
-    public function borrarTemporada(array $data, Temporada $temporada){
-        if($temporada->delete($data))
+    public function borrarTemporada(Temporada $temporada){
+        if(DB::table('Temporada')->where('codigo', $temporada->codigo)->delete())
             return true;
         else
             return false;

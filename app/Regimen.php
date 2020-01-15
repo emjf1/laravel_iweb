@@ -26,12 +26,16 @@ class Regimen extends Model
     }
 
     public function actualizarRegimen(array $data, Regimen $regimen){
-        $regimen->update($data);
-        return $regimen;
+        DB::table('Regimen')
+            ->where('codigo', $regimen->codigo)
+            ->update($data);
+
+        $regimenActualizada = DB::table('Regimen')->where('codigo', $data['codigo'])->first();
+        return $regimenActualizada;
     }
 
-    public function borrarRegimen(array $data, Regimen $regimen){
-        if($regimen->delete($data))
+    public function borrarRegimen(Regimen $regimen){
+        if(DB::table('Regimen')->where('codigo', $regimen->codigo)->delete())
             return true;
         else
             return false;

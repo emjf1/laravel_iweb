@@ -26,12 +26,16 @@ class Imagen extends Model
     }
 
     public function actualizarImagen(array $data, Imagen $imagen){
-        $imagen->update($data);
-        return $imagen;
+        DB::table('Imagen')
+            ->where('codigo', $imagen->codigo)
+            ->update($data);
+
+        $imagenActualizada = DB::table('Imagen')->where('codigo', $data['codigo'])->first();
+        return $imagenActualizada;
     }
 
     public function borrarImagen(Imagen $imagen){
-        if($imagen->delete($data))
+        if(DB::table('Imagen')->where('codigo', $imagen->codigo)->delete())
             return true;
         else
             return false;
