@@ -29,16 +29,12 @@ class Tipo_usuario extends Model
             DB::table('Tipo_usuario')
                 ->where('codigo', $id)
                 ->update($data);
-
-            $tuserActualizada = DB::table('Tipo_usuario')->where('codigo', $data['codigo'])->first();
-            return $tuserActualizada;
+            return DB::table('Tipo_usuario')->where('codigo', $data['codigo'])->first();
         }
 
         public static function borrarTipo_usuario(String $id){
-            if(DB::table('Tipo_usuario')->where('codigo', $id)->delete())
-                return true;
-            else
-                return false;
+            return DB::table('Tipo_usuario')->where('codigo', $id)->delete();
+
         }
 
         public static function mostrarTipo_usuario(String $id){
@@ -46,7 +42,6 @@ class Tipo_usuario extends Model
         }
 
         public static function listarTipo_Usuario(){
-            $tusers = Tipo_usuario::all();
-            return $tusers;
+            return Tipo_usuario::all();
         }
 }
