@@ -22,11 +22,10 @@ class Habitacion extends Model
     }
 
     public static function listarHabitaciones(){
-        $habitaciones = Habitacion::All();
-        return $habitaciones;
+        return Habitacion::All();;
     }
 
-    public static function mostrarHabitacion($id){
+    public static function mostrarHabitacion(String $id){
         return DB::table('Habitacion')->where('codigo', $id)->first();
     }
 
@@ -45,23 +44,18 @@ class Habitacion extends Model
         return $habitacion;
     }
 
-    public static function actualizarHabitacion(array $data, $id){
+    public static function actualizarHabitacion(array $data, String $id){
         DB::table('Habitacion')
             ->where('codigo', $id)
             ->update($data);
-
-        $habitacionActualizada = DB::table('Habitacion')->where('codigo', $data['codigo'])->first();
-        return $habitacionActualizada;
+        return DB::table('Habitacion')->where('codigo', $data['codigo'])->first();
     }
 
-    public static function borrarHabitacion($id){
-        if(DB::table('Habitacion')->where('codigo', $id)->delete())
-            return true;
-        else
-            return false;
+    public static function borrarHabitacion(String $id){
+        return DB::table('Habitacion')->where('codigo', $id)->delete();
     }
 
-    public static function obtenerImagenHabitacion($id){
+    public static function obtenerImagenHabitacion(String $id){
        return DB::table('Habitacion')
             ->join('Imagen', 'Habitacion.codigo', '=', 'Imagen.habitacion')
             ->where('Habitacion.codigo',$id)

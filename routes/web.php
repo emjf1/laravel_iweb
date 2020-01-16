@@ -24,6 +24,7 @@ Route::put('/habitaciones/{id}', 'HabitacionController@editarHabitacion')->name(
 Route::delete('/habitaciones/{id}', 'HabitacionController@eliminarHabitacion')->name('habitaciones.borrar');
 
 // Imagen
+Route::get('/imagen', 'ImagenController@listaImagen')->name('imagen.lista');
 Route::get('/imagen/{id}', 'ImagenController@detalleImagen')->name('imagen.detalle');
 Route::post('/imagen', 'ImagenController@crearImagen')->name('imagen.crear');
 Route::put('/imagen/{id}', 'ImagenController@editarImagen')->name('imagen.editar');

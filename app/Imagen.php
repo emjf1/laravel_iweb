@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use DB;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,6 +17,10 @@ class Imagen extends Model
         return $this->hasMany('App\Habitacion');
     }
 
+    public static function listarImagen(){
+        return Imagen::All();;
+    }
+
     public static function crearImagen(array $data){
         $imagen = new Imagen();
         $imagen->codigo = $data['codigo'];
@@ -25,24 +30,18 @@ class Imagen extends Model
         return $imagen;
     }
 
-    public function actualizarImagen(array $data, Imagen $imagen){
+    public static function actualizarImagen(array $data, String $id){
         DB::table('Imagen')
-            ->where('codigo', $imagen->codigo)
+            ->where('codigo', $id)
             ->update($data);
-
-        $imagenActualizada = DB::table('Imagen')->where('codigo', $data['codigo'])->first();
-        return $imagenActualizada;
+        return DB::table('Imagen')->where('codigo', $data['codigo'])->first();
     }
 
-    public function borrarImagen(Imagen $imagen){
-        if(DB::table('Imagen')->where('codigo', $imagen->codigo)->delete())
-            return true;
-        else
-            return false;
+    public static function borrarImagen(String $id){
+        return DB::table('Imagen')->where('codigo', $id)->delete();
     }
 
-    public static function mostrarImagen(Imagen $data){
-        $imagen = Imagen::where('codigo', '=', $data->codigo);
-        return $imagen;
+    public static function mostrarImagen(String $id){
+        return DB::table('Imagen')->where('codigo', $id)->first();
     }
 }

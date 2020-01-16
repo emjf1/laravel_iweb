@@ -7,39 +7,25 @@ use App\Imagen;
 
 class ImagenController extends Controller
 {
-    public function detalleImagen($id)
-    {
-        $data = new Imagen();
-        $data->codigo = $id;
-
-        $resultado =  Imagen::mostrarImagen($data);
-        return response()->json($resultado);
+    public function listaImagen(){
+        return response()->json(Imagen::listarImagen());
     }
 
-    public function eliminarImagen($id)
-    {
-        $imagen = new Imagen();
-        $imagen->codigo = $id;
+    public function detalleImagen($id){
+        return response()->json(Imagen::mostrarImagen($id));
+    }
 
-        $resultado = Imagen::borrarImagen($imagen);
-        return response()->json($resultado);
+    public function eliminarImagen($id){
+        return response()->json(Imagen::borrarImagen($id));
     }
 
     public function crearImagen(){
         $data = request()->all();
-
-        $resultado = Imagen::crearImagen($data);
-        return response()->json($resultado);
+        return response()->json(Imagen::crearImagen($data));
     }
 
-    public function editarImagen($id)
-    {
+    public function editarImagen($id){
         $data = request()->all();
-
-        $imagen = new Imagen();
-        $imagen->codigo = $id;
-
-        $resultado = Imagen::actualizarImagen($data, $imagen);
-        return response()->json($resultado);
+        return response()->json(Imagen::actualizarImagen($data, $id));
     }
 }
