@@ -25,10 +25,6 @@ class Habitacion extends Model
         return Habitacion::All();;
     }
 
-    public static function mostrarHabitacion(String $id){
-        return DB::table('Habitacion')->where('codigo', $id)->first();
-    }
-
     public static function crearHabitacion(array $data){
         $habitacion = new Habitacion();
         $habitacion->codigo = $data['codigo'];
@@ -61,5 +57,9 @@ class Habitacion extends Model
             ->where('Habitacion.codigo',$id)
             ->select('Imagen.codigo','Imagen.url')
             ->get();
+    }
+
+    public static function mostrarHabitacion(String $id){
+        return DB::table('Habitacion')->where('codigo', $id)->first();
     }
 }

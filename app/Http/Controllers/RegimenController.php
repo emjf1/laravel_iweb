@@ -5,47 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Regimen;
 
-class RegimenController extends Controller
-{
-    public function listaRegimen()
-    {
-        $resultado = Regimen::listarRegimen();
-        return response()->json($resultado);
+class RegimenController extends Controller{
+    public function listaRegimen(){
+        return response()->json(Regimen::listarRegimen());
     }
 
-    public function detalleRegimen($id)
-    {
-        $data = new Regimen();
-        $data->codigo = $id;
-
-        $resultado =  Regimen::mostrarRegimen($data);
-        return response()->json($resultado);
+    public function detalleRegimen($id){
+        return response()->json(Regimen::mostrarRegimen($id));
     }
 
-    public function eliminarRegimen($id)
-    {
-        $regimen = new Regimen();
-        $regimen->codigo = $id;
-
-        $resultado = Regimen::borrarRegimen($regimen);
-        return response()->json($resultado);
+    public function eliminarRegimen($id){
+        return response()->json(Regimen::borrarRegimen($id));
     }
 
     public function crearRegimen(){
         $data = request()->all();
-
-        $resultado = Regimen::crearRegimen($data);
-        return response()->json($resultado);
+        return response()->json(Regimen::crearRegimen($data));
     }
 
-    public function editarRegimen($id)
-    {
+    public function editarRegimen($id){
         $data = request()->all();
-
-        $regimen = new Regimen();
-        $regimen->codigo = $id;
-
-        $resultado = Regimen::actualizarRegimen($data, $regimen);
-        return response()->json($resultado);
+        return response()->json(Regimen::actualizarRegimen($data, $id));
     }
 }
