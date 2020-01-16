@@ -33,5 +33,4 @@ class TipoUsuarioController extends Controller
     public function eliminarTipoUsuario($id){
         return response()->json(Tipo_usuario::borrarTipo_usuario($id));
     }
-
 }

@@ -22,13 +22,7 @@ class Habitacion extends Model
     }
 
     public static function listarHabitaciones(){
-        $habitaciones = Habitacion::All();
-        return $habitaciones;
-    }
-
-    public static function mostrarHabitacion(Habitacion $data){
-        $habitacion = DB::table('Habitacion')->where('codigo', $data->codigo)->first();
-        return $habitacion;
+        return Habitacion::All();;
     }
 
     public static function crearHabitacion(array $data){
@@ -46,28 +40,26 @@ class Habitacion extends Model
         return $habitacion;
     }
 
-    public static function actualizarHabitacion(array $data, Habitacion $habitacion){
+    public static function actualizarHabitacion(array $data, String $id){
         DB::table('Habitacion')
-            ->where('codigo', $habitacion->codigo)
+            ->where('codigo', $id)
             ->update($data);
-
-        $habitacionActualizada = DB::table('Habitacion')->where('codigo', $data['codigo'])->first();
-        return $habitacionActualizada;
+        return DB::table('Habitacion')->where('codigo', $data['codigo'])->first();
     }
 
-    public static function borrarHabitacion(Habitacion $habitacion){
-        if(DB::table('Habitacion')->where('codigo', $habitacion->codigo)->delete())
-            return true;
-        else
-            return false;
+    public static function borrarHabitacion(String $id){
+        return DB::table('Habitacion')->where('codigo', $id)->delete();
     }
 
-    public static function obtenerImagenHabitacion(Habitacion $data){
+    public static function obtenerImagenHabitacion(String $id){
        return DB::table('Habitacion')
             ->join('Imagen', 'Habitacion.codigo', '=', 'Imagen.habitacion')
-            ->where('Habitacion.codigo',$data->codigo)
+            ->where('Habitacion.codigo',$id)
             ->select('Imagen.codigo','Imagen.url')
             ->get();
+    }
 
+    public static function mostrarHabitacion(String $id){
+        return DB::table('Habitacion')->where('codigo', $id)->first();
     }
 }

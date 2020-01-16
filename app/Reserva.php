@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Reserva extends Model
 {
@@ -32,14 +33,8 @@ class Reserva extends Model
             return $this->belongsTo('App\Habitacion');
     }
 
-    public static function listarReserva(){
-        $reservas = Reserva::All();
-        return $reservas;
-    }
-
     public static function listarReservaUsuario(String $usuario){
-        $reservas = DB::table('Reserva')->where('usuario', $usuario)->get();
-        return $reservas;
+        return DB::table('Reserva')->where('usuario', $usuario)->get();;
     }
 
     public static function crearReserva(array $data){
@@ -57,24 +52,22 @@ class Reserva extends Model
         return $reserva;
     }
 
-    public function actualizarReserva(array $data, Reserva $reserva){
+    public static function listarReserva(){
+        return Reserva::All();
+    }
+
+    public static function actualizarReserva(array $data, String $id){
         DB::table('Reserva')
-            ->where('codigo', $reserva->codigo)
+            ->where('codigo', $id)
             ->update($data);
-
-        $reservaActualizada = DB::table('Reserva')->where('codigo', $data['codigo'])->first();
-        return $reservaActualizada;
+        return DB::table('Reserva')->where('codigo', $data['codigo'])->first();
     }
 
-    public function borrarReserva(Reserva $reserva){
-        if(DB::table('Reserva')->where('codigo', $reserva->codigo)->delete())
-            return true;
-        else
-            return false;
+    public static function borrarReserva(String $id){
+        return DB::table('Reserva')->where('codigo', $id)->delete();
     }
 
-    public static function mostrarReserva(Reserva $data){
-        $reserva = Reserva::where('codigo', '=', $data->codigo);
-        return $reserva;
+    public static function mostrarReserva(String $id){
+        return DB::table('Reserva')->where('codigo', $id)->first();
     }
 }

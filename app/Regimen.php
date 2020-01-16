@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Regimen extends Model
 {
@@ -16,11 +17,6 @@ class Regimen extends Model
         return $this->hasMany('App\Reserva');
     }
 
-    public static function listarRegimen(){
-        $reg = Regimen::All();
-        return $reg;
-    }
-
     public static function crearRegimen(array $data){
         $regimen = new Regimen();
         $regimen->codigo = $data['codigo'];
@@ -31,24 +27,22 @@ class Regimen extends Model
         return $regimen;
     }
 
-    public function actualizarRegimen(array $data, Regimen $regimen){
+    public static function listarRegimen(){
+        return Regimen::All();
+    }
+
+    public static function actualizarRegimen(array $data, String $id){
         DB::table('Regimen')
-            ->where('codigo', $regimen->codigo)
+            ->where('codigo', $id)
             ->update($data);
-
-        $regimenActualizada = DB::table('Regimen')->where('codigo', $data['codigo'])->first();
-        return $regimenActualizada;
+        return DB::table('Regimen')->where('codigo', $data['codigo'])->first();
     }
 
-    public function borrarRegimen(Regimen $regimen){
-        if(DB::table('Regimen')->where('codigo', $regimen->codigo)->delete())
-            return true;
-        else
-            return false;
+    public static function borrarRegimen(String $id){
+        return DB::table('Regimen')->where('codigo', $id)->delete();
     }
 
-    public static function mostrarRegimen(Regimen $data){
-        $regimen = Regimen::where('codigo', '=', $data->codigo);
-        return $regimen;
+    public static function mostrarRegimen(String $id){
+        return DB::table('Regimen')->where('codigo', $id)->first();
     }
 }
