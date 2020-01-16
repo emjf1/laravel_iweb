@@ -71,4 +71,15 @@ class AuthController extends Controller
             'user' => auth()->user(),
         ]);
     }
+
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['nombre'],
+            'email' => $data['email'],
+            'apellidos' => $data['apellidos'],
+            'telefono' => $data['direccion'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
 }
