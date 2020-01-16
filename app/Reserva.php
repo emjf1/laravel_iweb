@@ -2,11 +2,13 @@
 
 namespace App;
 
+use App\Http\Controllers\UsuarioController;
 use DateInterval;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 use DateTime;
 use Date;
+
 
 class Reserva extends Model
 {
@@ -51,11 +53,16 @@ class Reserva extends Model
         $reserva->sala_conferencia   = $data['sala_conferencia'];
         $reserva->regimen = $data['regimen'];
         $reserva->tipo_reserva = $data['tipo_reserva'];
+
         if(self::compruebaFecha($reserva)) {
-            $reserva->save();
-            return $reserva;
+            if(self::compruebaUsuario($reserva)){
+                $reserva->save();
+                return $reserva;
+            }else{
+                return "No se ha podido crear el usuario";
+            }
         }else{
-            return "La fecha elegida está reservada";
+            throw new \Exception("La fecha elegida está reservada");
         }
     }
 
@@ -78,8 +85,17 @@ class Reserva extends Model
         return DB::table('Reserva')->where('codigo', $id)->first();
     }
 
-    public static function recortaFecha(String $fecha){
-        return substr($fecha, 5, 5);
+    public static function buscaUsuario(String $id){
+        return DB::table('users')->where('email', $id)->first();
+    }
+
+    public static function compruebaUsuario(Reserva $reserva){
+        $usuario = self::buscaUsuario($reserva->usuario);
+        if(is_null($usuario)){
+            return true;
+        }else{
+            return true;
+        }
     }
 
     public static function buscaHabitacionReservada(String $id){
@@ -129,20 +145,14 @@ class Reserva extends Model
         $fin = new DateTime($reserva->fecha_fin);
 
         $diasReservados = $inicio->diff($fin)->days;
-
-
-        //$fechaReserva1string = self::recortaFecha($reserva->fecha_inicio);
-        //$fechaReserva2string = self::recortaFecha($reserva->fecha_fin);
-
-
-        if(!is_null($reserva->habitacion)) {
+         if(!is_null($reserva->habitacion)) {
             $reservaHabitaciones = self::buscaHabitacionReservada($reserva->habitacion);
             return self::compruebaFechaReservada($reservaHabitaciones, $diasReservados, $inicio);
         }else if(!is_null($reserva->sala_conferencia)){
             $reservaSalas = self::buscaSalaReservada($reserva->sala_conferencia);
             return self::compruebaFechaReservada($reservaSalas, $diasReservados, $inicio);
         }else{
-            throw new \Exception("No se ha solicitado habitación ni sala.");
+            return "No se ha solicitado habitación ni sala.";
         }
     }
 }
