@@ -81,6 +81,14 @@ class User extends Authenticatable implements JWTSubject
         return $usuario;
     }
 
+    public static function registrarUsuario(User $u){
+        $u->name = "sin nombre";
+        $u->apellidos = "sin apellidos";
+        $u->password = Hash::make("ContraPrueba123");
+        $u->save();
+        return $u;
+    }
+
     public static function listarUsuario(){
         return User::All();
     }

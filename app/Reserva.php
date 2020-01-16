@@ -91,10 +91,16 @@ class Reserva extends Model
 
     public static function compruebaUsuario(Reserva $reserva){
         $usuario = self::buscaUsuario($reserva->usuario);
-        if(is_null($usuario)){
+        if(!is_null($usuario)){
             return true;
         }else{
-            return true;
+            $u = new User();
+            $u->email = $reserva->usuario;
+            if(is_null(User::registrarUsuario($u))){
+                return false;
+            }else{
+                return true;
+            }
         }
     }
 
