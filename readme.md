@@ -20,6 +20,8 @@ https://laravel.com/docs/5.8/installation
 - PHPMyAdmin
 https://askubuntu.com/questions/387062/how-to-solve-the-phpmyadmin-not-found-issue-after-upgrading-php-and-apache
 
+## Tutorial Token JWT para Api Laravel 
+https://medium.com/@experttyce/c%C3%B3mo-crear-un-api-rest-con-laravel-5-7-y-jwt-token-94b79c533c6d
 
 ## Pasos para ejecutar el proyecto
 
