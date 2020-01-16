@@ -20,6 +20,8 @@ class User extends Authenticatable implements JWTSubject
         'name', 'email', 'password', 'apellidos', 'telefono', 'direccion', 'dni', 'nacionalidad'
     ];
 
+    public $timestamps = false;
+
     /**
      * The attributes that should be hidden for arrays.
      *
