@@ -18,11 +18,6 @@ class Sala_conferencia extends Model
         return $this->hasMany('App\Reserva');
     }
 
-    public static function listarSalas(){
-        $salas = Sala_conferencia::All();
-        return $salas;
-    }
-
     public static function crearSala(array $data){
         $sala = new Sala_conferencia();
         $sala->codigo = $data['codigo'];
@@ -38,21 +33,22 @@ class Sala_conferencia extends Model
         return $sala;
     }
 
-    public static function actualizarSala(array $data, Sala_conferencia $sala){
-        DB::table('Sala_conferencia')->where('codigo', $sala->codigo)->update($data);
-        $salaActualizada = DB::table('Sala_conferencia')->where('codigo', $data['codigo'])->first();
-        return $salaActualizada;
+    public static function listarSala(){
+        return Sala_conferencia::All();
     }
 
-    public static function borrarSala(Sala_conferencia $sala){
-        if(DB::table('Sala_conferencia')->where('codigo', $sala->codigo)->delete())
-            return true;
-        else
-            return false;
+    public static function actualizarSala(array $data, String $id){
+        DB::table('Sala_conferencia')
+            ->where('codigo', $id)
+            ->update($data);
+        return DB::table('Sala_conferencia')->where('codigo', $data['codigo'])->first();
     }
 
-    public static function mostrarSala(Sala_conferencia $data){
-        $sala = Sala_conferencia::where('codigo', '=', $data->codigo)->first();
-        return $sala;
+    public static function borrarSala(String $id){
+        return DB::table('Sala_conferencia')->where('codigo', $id)->delete();
+    }
+
+    public static function mostrarSala(String $id){
+        return DB::table('Sala_conferencia')->where('codigo', $id)->first();
     }
 }

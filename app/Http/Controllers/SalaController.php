@@ -5,57 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Sala_conferencia;
 
-class SalaController extends Controller
-{
-    public function listaSala()
-    {
-        $resultado = Sala_conferencia::listarSalas();
-        return response()->json($resultado);
+class SalaController extends Controller{
+    public function listaSala(){
+        return response()->json(Sala_conferencia::listarSala());
     }
 
-    public function detalleSala($id)
-    {
-        $data = new Sala_conferencia();
-        $data->codigo = $id;
-
-        $resultado =  Sala_conferencia::mostrarSala($data);
-        return response()->json($resultado);
+    public function detalleSala($id){
+        return response()->json(Sala_conferencia::mostrarSala($id));
     }
 
-    /*public function fotosSala($id)
-    {
-        $data = new Sala_conferencia();
-        $data->codigo = $id;
+    public function eliminarSala($id){
+        return response()->json(Sala_conferencia::borrarSala($id));
+    }
 
-        $resultado = Sala_conferencia::mostrarImagenSala($data);
-        return ($resultado);
-    }*/
-
-    public function crearSala()
-    {
+    public function crearSala(){
         $data = request()->all();
-
-        $resultado = Sala_conferencia::crearSala($data);
-        return response()->json($resultado);
+        return response()->json(Sala_conferencia::crearSala($data));
     }
 
-    public function editarSala($id)
-    {
+    public function editarSala($id){
         $data = request()->all();
-
-        $sala = new Sala_conferencia();
-        $sala->codigo = $id;
-
-        $resultado = Sala_conferencia::actualizarSala($data, $sala);
-        return response()->json($resultado);
-    }
-
-    public function eliminarSala($id)
-    {
-        $sala = new Sala_conferencia();
-        $sala->codigo = $id;
-
-        $resultado =  Sala_conferencia::borrarSala($sala);
-        return response()->json($resultado);
+        return response()->json(Sala_conferencia::actualizarSala($data, $id));
     }
 }
