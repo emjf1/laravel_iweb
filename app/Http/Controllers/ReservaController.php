@@ -12,6 +12,11 @@ class ReservaController extends Controller
         return response()->json(Reserva::listarReservaUsuario($usuario));
     }
 
+    public function obtenerListaReservasFecha(){
+        $data = request()->all();
+        return response()->json(Reserva::obtenerListaReservasFecha($data));
+    }
+
     public function listaReserva(){
         return response()->json(Reserva::listarReserva());
     }

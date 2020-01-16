@@ -45,6 +45,7 @@ Route::get('/perfil/reservas', 'ReservaController@listaReservasUsuario')->name('
 Route::post('/reservas', 'ReservaController@crearReserva')->name('reservas.crear');
 Route::put('/reservas/{id}', 'ReservaController@editarReserva')->name('reservas.editar');
 Route::delete('/reservas/{id}', 'ReservaController@eliminarReserva')->name('reservas.borrar');
+Route::post('/reservasfecha', 'ReservaController@obtenerListaReservasFecha')->name('reservas.fechas');
 
 // Sala
 Route::get('/salas', 'SalaController@listaSala')->name('salas.lista');
