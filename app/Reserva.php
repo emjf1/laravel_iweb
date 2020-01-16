@@ -70,6 +70,14 @@ class Reserva extends Model
         return Reserva::All();
     }
 
+    //AQUI ES
+    public static function obtenerListaReservasFecha(array $data){
+        $habitaciones = DB::table('Habitacion')->whereDate('fecha_inicio', '>', $data['fecha_fin'])
+            ->orWhereDate('fecha_fin', '<', $data['fecha_inicio'])
+            ->get();
+        return $habitaciones;
+    }
+
     public static function actualizarReserva(array $data, String $id){
         DB::table('Reserva')
             ->where('codigo', $id)
