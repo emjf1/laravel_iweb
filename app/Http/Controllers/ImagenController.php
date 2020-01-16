@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Imagen;
 
-class Imagen extends Controller
+class ImagenController extends Controller
 {
     public function detalleImagen($id)
     {
