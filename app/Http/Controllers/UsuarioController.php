@@ -16,49 +16,26 @@ class UsuarioController extends Controller
     {
         ///
     }
-
-    public function listaUsuario()
-    {
-        $resultado = Usuario::listarUsuarios();
-        return response()->json($resultado);
+    public function listaUsuario(){
+        return response()->json(Usuario::listarUsuario());
     }
 
-    public function infoUsuario()
-    {
-        $data = new Usuario();
-        //$data->email = $id;
-
-        $resultado =  Usuario::mostrarUsuario($data);
-        return response()->json($resultado);
+    public function detalleUsuario($id){
+        return response()->json(Usuario::mostrarUsuario($id));
     }
 
-    public function crearUsuario()
-    {
+    public function eliminarUsuario($id){
+        return response()->json(Usuario::borrarUsuario($id));
+    }
+
+    public function crearUsuario(){
         $data = request()->all();
-
-        $resultado = Usuario::crearUsuario($data);
-        return response()->json($resultado);
+        return response()->json(Usuario::crearUsuario($data));
     }
 
-    public function editarUsuario($id)
-    {
+    public function editarUsuario($id){
         $data = request()->all();
-
-        $usuario = new Usuario();
-        $usuario->email = $id;
-
-        $resultado = Usuario::actualizarUsuario($data, $usuario);
-        return response()->json($resultado);
+        return response()->json(Usuario::actualizarUsuario($data, $id));
     }
-
-    public function eliminarUsuario($id)
-    {
-        $usuario = new Usuario();
-        $usuario->codigo = $id;
-
-        $resultado = Usuario::borrarUsuario($usuario);
-        return response()->json($resultado);
-    }
-
 }
 

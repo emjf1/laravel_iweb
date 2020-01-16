@@ -35,22 +35,22 @@ class Usuario extends Model
         return $usuario;
     }
 
-    public static function mostrarUsuario(Usuario $data){
-        $usuario = DB::table('Usuario')->where('email', $data->email)->first();
-        return $usuario;
+    public static function listarUsuario(){
+        return Usuario::All();
     }
 
-    public function actualizarUsuario(array $data, Usuario $usuario){
-        $usuario = DB::table('Usuario')
-            ->where('email', $usuario->email)
+    public static function actualizarUsuario(array $data, String $id){
+        DB::table('Usuario')
+            ->where('codigo', $id)
             ->update($data);
-        return $usuario;
+        return DB::table('Usuario')->where('codigo', $data['codigo'])->first();
     }
 
-    public function borrarUsuario(Usuario $usuario){
-        if(DB::table('Usuario')->where('email', $usuario['email'])->delete())
-            return true;
-        else
-            return false;
+    public static function borrarUsuario(String $id){
+        return DB::table('Usuario')->where('codigo', $id)->delete();
+    }
+
+    public static function mostrarUsuario(String $id){
+        return DB::table('Usuario')->where('codigo', $id)->first();
     }
 }
