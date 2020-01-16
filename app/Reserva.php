@@ -62,7 +62,7 @@ class Reserva extends Model
                 return "No se ha podido crear el usuario";
             }
         }else{
-            throw new \Exception("La fecha elegida está reservada");
+            return "La fecha elegida está reservada";
         }
     }
 
