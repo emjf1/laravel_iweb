@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
@@ -69,17 +75,6 @@ class AuthController extends Controller
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
             'user' => auth()->user(),
-        ]);
-    }
-
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['nombre'],
-            'email' => $data['email'],
-            'apellidos' => $data['apellidos'],
-            'telefono' => $data['direccion'],
-            'password' => Hash::make($data['password']),
         ]);
     }
 }

@@ -84,11 +84,10 @@ Route::delete('/usuarios/{userID}', 'UsuarioController@eliminarUsuario')->name('
 
 
 // Autenticacion (Login Token JWT)
-Route::group([
-    'prefix' => 'auth',
-], function () {
-    Route::post('/login', 'AuthController@login')->name('login');
+Route::group(['middleware' => ['jwt']], function() {
     Route::post('/logout', 'AuthController@logout')->name('logout');
     Route::post('/refresh', 'AuthController@refresh')->name('refresh');
-    Route::post('/me', 'AuthController@me')->name('me');
+    Route::post('/perfil', 'AuthController@me')->name('perfil');
 });
+Route::post('/registro', 'UsuarioController@register')->name('register');
+Route::post('/login', 'AuthController@login')->name('login');
