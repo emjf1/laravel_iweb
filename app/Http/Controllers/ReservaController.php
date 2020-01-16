@@ -7,52 +7,30 @@ use App\Reserva;
 
 class ReservaController extends Controller
 {
-    public function listaReserva()
-    {
-        $resultado = Reserva::listarReserva();
-        return response()->json($resultado);
-    }
-
-    public function listaReservaUsuario()
-    {
+    public function listaReservaUsuario(){
         $usuario = "prueba@email.com";
-        $resultado = Reserva::listarReservaUsuario($usuario);
-        return response()->json($resultado);
+        return response()->json(Reserva::listarReservaUsuario($usuario));
     }
 
-    public function detalleReserva($id)
-    {
-        $data = new Reserva();
-        $data->codigo = $id;
-
-        $resultado =  Reserva::mostrarReserva($data);
-        return response()->json($resultado);
+    public function listaReserva(){
+        return response()->json(Reserva::listarReserva());
     }
 
-    public function eliminarReserva($id)
-    {
-        $reserva = new Reserva();
-        $reserva->codigo = $id;
+    public function detalleReserva($id){
+        return response()->json(Reserva::mostrarReserva($id));
+    }
 
-        $resultado = Reserva::borrarReserva($reserva);
-        return response()->json($resultado);
+    public function eliminarReserva($id){
+        return response()->json(Reserva::borrarReserva($id));
     }
 
     public function crearReserva(){
         $data = request()->all();
-
-        $resultado = Reserva::crearReserva($data);
-        return response()->json($resultado);
+        return response()->json(Reserva::crearReserva($data));
     }
 
-    public function editarReserva($id)
-    {
+    public function editarReserva($id){
         $data = request()->all();
-
-        $reserva = new Reserva();
-        $reserva->codigo = $id;
-
-        $resultado = Reserva::actualizarReserva($data, $reserva);
-        return response()->json($resultado);
+        return response()->json(Reserva::actualizarReserva($data, $id));
     }
 }
