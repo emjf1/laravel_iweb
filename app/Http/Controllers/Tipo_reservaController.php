@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Tipo_reserva;
 
-class Tipo_reserva extends Controller
+class Tipo_reservaController extends Controller
 {
     public function listaTipo_reserva()
     {
