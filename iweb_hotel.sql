@@ -85,24 +85,10 @@ CREATE TABLE `migrations` (
 -- Volcado de datos para la tabla `migrations`
 --
 
-INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+/*INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2020_01_08_221240_create_pruebamigration_table', 1),
-(4, '2020_01_08_222829_create_pruebas_table', 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pruebas`
---
-
-CREATE TABLE `pruebas` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(3, '2020_01_08_222829_create_pruebas_table', 1);*/
 
 -- --------------------------------------------------------
 
@@ -213,22 +199,25 @@ INSERT INTO `Tipo_usuario` (`codigo`, `tipo`) VALUES
 -- Estructura de tabla para la tabla `Usuario`
 --
 
-CREATE TABLE `Usuario` (
+CREATE TABLE `users` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
   `email` varchar(256) NOT NULL,
-  `nombre` text NOT NULL,
+  `name` varchar(256) NOT NULL,
   `apellidos` text NOT NULL,
   `telefono` int(9) DEFAULT NULL,
   `direccion` text NOT NULL,
-  `password` text NOT NULL,
+  `password` varchar(256) NOT NULL,
+  `rememberToken` varchar(256),
   `dni` varchar(10) NOT NULL,
-  `tipo_usuario` int(11) NOT NULL
+  `tipo_usuario` int(11) NOT NULL,
+  `nacionalidad` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `Usuario`
 --
 
-INSERT INTO `Usuario` (`email`, `nombre`, `apellidos`, `telefono`, `direccion`, `password`, `dni`, `tipo_usuario`) VALUES
+INSERT INTO `users` (`email`, `name`, `apellidos`, `telefono`, `direccion`, `password`, `dni`, `tipo_usuario`) VALUES
 ('admin2@ua.es', 'Administrador', 'Segundo', 999888777, 'Universidad de Alicante', 'AdminUA123', '12345678B', 0),
 ('admin3@ua.es', 'Administrador', 'Tercero', 999888777, 'Universidad de Alicante', 'AdminUA123', '12345678B', 0),
 ('admin@ua.es', 'Administrador', 'Principal', 999888777, 'Universidad de Alicante', 'AdminUA123', '12345678A', 0),
@@ -255,12 +244,6 @@ ALTER TABLE `Imagen`
 -- Indices de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `pruebas`
---
-ALTER TABLE `pruebas`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -307,9 +290,10 @@ ALTER TABLE `Tipo_usuario`
 --
 -- Indices de la tabla `Usuario`
 --
-ALTER TABLE `Usuario`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`email`),
   ADD KEY `fk_tipoUsuario_usuario` (`tipo_usuario`);
+
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -321,11 +305,6 @@ ALTER TABLE `Usuario`
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
---
--- AUTO_INCREMENT de la tabla `pruebas`
---
-ALTER TABLE `pruebas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `Reserva`
@@ -357,12 +336,12 @@ ALTER TABLE `Reserva`
   ADD CONSTRAINT `fk_reserva_regimen` FOREIGN KEY (`regimen`) REFERENCES `Regimen` (`codigo`),
   ADD CONSTRAINT `fk_reserva_salaConferencia` FOREIGN KEY (`sala_conferencia`) REFERENCES `Sala_conferencia` (`codigo`),
   ADD CONSTRAINT `fk_reserva_tipoReserva` FOREIGN KEY (`tipo_reserva`) REFERENCES `Tipo_reserva` (`codigo`),
-  ADD CONSTRAINT `fk_reserva_usuario` FOREIGN KEY (`usuario`) REFERENCES `Usuario` (`email`);
+  ADD CONSTRAINT `fk_reserva_usuario` FOREIGN KEY (`usuario`) REFERENCES `users` (`email`);
 
 --
 -- Filtros para la tabla `Usuario`
 --
-ALTER TABLE `Usuario`
+ALTER TABLE `users`
   ADD CONSTRAINT `fk_tipoUsuario_usuario` FOREIGN KEY (`tipo_usuario`) REFERENCES `Tipo_usuario` (`codigo`);
 COMMIT;
 
