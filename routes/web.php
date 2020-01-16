@@ -75,10 +75,19 @@ Route::put('/tipousuario/{id}', 'TipoUsuarioController@editarTipoUsuario')->name
 Route::delete('/tipousuario/{id}', 'TipoUsuarioController@eliminarTipoUsuario')->name('tipousuario.borrar');
 
 // Usuario
-Route::get('/login', 'UsuarioController@login')->name('usuarios.login');
-Route::get('/registro', 'UsuarioController@registro')->name('usuarios.registro');
 Route::get('/usuarios', 'UsuarioController@listaUsuario')->name('usuarios.lista');
 Route::get('/perfil', 'UsuarioController@infoUsuario')->name('usuarios.detalle');
 Route::post('/usuarios', 'UsuarioController@crearUsuario')->name('usuarios.crear');
 Route::put('/usuarios/{userID}', 'UsuarioController@editarUsuario')->name('usuarios.editar');
 Route::delete('/usuarios/{userID}', 'UsuarioController@eliminarUsuario')->name('usuarios.borrar');
+
+
+// Autenticacion (Login Token JWT)
+Route::group([
+    'prefix' => 'auth',
+], function () {
+    Route::post('/login', 'AuthController@login')->name('login');
+    Route::post('/logout', 'AuthController@logout')->name('logout');
+    Route::post('/refresh', 'AuthController@refresh')->name('refresh');
+    Route::post('/me', 'AuthController@me')->name('me');
+});
