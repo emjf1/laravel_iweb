@@ -130,7 +130,7 @@ CREATE TABLE `Reserva` (
 --
 
 INSERT INTO `Reserva` (`codigo`, `fecha_inicio`, `fecha_fin`, `descripcion`, `usuario`, `habitacion`, `sala_conferencia`, `regimen`, `tipo_reserva`) VALUES
-(4, '2020-01-16', '2020-01-22', 'asdadsasdadsadadasdasdasdadsasdasdasdasdas', 'prueba@email.com', 0, NULL, 0, 2);
+(4, '2020-01-16', '2020-01-22', 'asdadsasdadsadadasdasdasdadsasdasdasdasdas', 'admin@ua.es', 0, NULL, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -237,14 +237,14 @@ CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
   `email` varchar(256) NOT NULL,
   `name` varchar(256) NOT NULL,
-  `apellidos` text NOT NULL,
+  `apellidos` text  NOT NULL,
   `telefono` int(9) DEFAULT NULL,
-  `direccion` text NOT NULL,
+  `direccion` text  DEFAULT NULL,
   `password` varchar(256) NOT NULL,
   `rememberToken` varchar(256) DEFAULT NULL,
-  `dni` varchar(10) NOT NULL,
-  `tipo_usuario` int(11) NOT NULL,
-  `nacionalidad` text NOT NULL
+  `dni` varchar(10)  DEFAULT NULL,
+  `tipo_usuario` int(11) DEFAULT 2 NOT NULL,
+  `nacionalidad` text  DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -252,10 +252,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `name`, `apellidos`, `telefono`, `direccion`, `password`, `rememberToken`, `dni`, `tipo_usuario`, `nacionalidad`) VALUES
-(1, 'admin2@ua.es', 'Administrador', 'Segundo', 999888777, 'Universidad de Alicante', 'AdminUA123', NULL, '12345678B', 0, ''),
-(2, 'admin3@ua.es', 'Administrador', 'Tercero', 999888777, 'Universidad de Alicante', 'AdminUA123', NULL, '12345678B', 0, ''),
-(3, 'admin@ua.es', 'Administrador', 'Principal', 999888777, 'Universidad de Alicante', 'AdminUA123', NULL, '12345678A', 0, ''),
-(4, 'prueba@email.com', 'Administrador', 'Tercero', 999888777, 'Universidad de Alicante', 'AdminUA123', NULL, '12345678B', 0, '');
+(1, 'admin@ua.es', 'Pedro', 'Martinez', 111222333, 'Universidad de Alicante', '123456', NULL, '12345678A', 0, 'España'),
+(2, 'recepcionista@ua.es', 'Maria', 'Garcia', 444555666, 'Universidad de Alicante', '123456', NULL, '12345678B', 1, 'Francia'),
+(3, 'cliente@ua.es', 'Antonio', 'Sierra', 777888999, 'Universidad de Alicante', '123456', NULL, '12345678C', 2, 'Italia');
 
 --
 -- Índices para tablas volcadas
