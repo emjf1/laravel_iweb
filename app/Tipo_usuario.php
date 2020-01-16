@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Tipo_usuario extends Model
 {
@@ -24,28 +25,27 @@ class Tipo_usuario extends Model
             return $tusuario;
         }
 
-        public function actualizarTipo_usuario(array $data, Tipo_usuario $tuser){
+        public static function actualizarTipo_usuario(array $data, String $id){
             DB::table('Tipo_usuario')
-                ->where('codigo', $tuser->codigo)
+                ->where('codigo', $id)
                 ->update($data);
 
             $tuserActualizada = DB::table('Tipo_usuario')->where('codigo', $data['codigo'])->first();
             return $tuserActualizada;
         }
 
-        public function borrarTipo_usuario(Tipo_usuario $tusuario){
-            if(DB::table('Tipo_usuario')->where('codigo', $tusuario->codigo)->delete())
+        public static function borrarTipo_usuario(String $id){
+            if(DB::table('Tipo_usuario')->where('codigo', $id)->delete())
                 return true;
             else
                 return false;
         }
 
-        public static function mostrarTipo_usuario(Tipo_usuario $data){
-            $tusuario = Tipo_usuario::where('tipo', '=', $data->tipo);
-            return $tusuario;
+        public static function mostrarTipo_usuario(String $id){
+            return DB::table('Tipo_usuario')->where('codigo', $id)->first();;
         }
 
-        public static function listarTipoUsuario(){
+        public static function listarTipo_Usuario(){
             $tusers = Tipo_usuario::all();
             return $tusers;
         }

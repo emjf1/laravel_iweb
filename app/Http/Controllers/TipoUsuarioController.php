@@ -7,8 +7,8 @@ use App\Tipo_usuario;
 
 class TipoUsuarioController extends Controller
 {
-    public function listarTipoUsuario(){
-        return Tipo_usuario::listarTipoUsuario();
+    public function listaTipoUsuario(){
+        return response()->json(Tipo_usuario::listarTipo_Usuario());
     }
 
     public function crearTipoUsuario(){
@@ -19,19 +19,19 @@ class TipoUsuarioController extends Controller
                 'codigo.required' => 'El campo codigo está mal',
                 'tipo.required' => 'El campo tipo está mal'
             ]);
-        return Tipo_usuario::crear($data);
+        return Tipo_usuario::crearTipo_Usuario($data);
     }
 
-    public function detalleTipoUsuario(){
-        return Tipo_usuario::leer($data);
+    public function detalleTipoUsuario($id){
+        return response()->json(Tipo_usuario::mostrarTipo_usuario($id));
     }
 
-    public function editarTipoUsuario($data, $tuser){
-        return Tipo_usuario::actualizar($data, $tuser);
+    public function editarTipoUsuario($id){
+        return response()->json(Tipo_usuario::actualizarTipo_usuario(request()->all(), $id));
     }
 
-    public function eliminarTipoUsuario($data, $tusuario){
-        return Tipo_usuario::borrar($data, $tusuario);
+    public function eliminarTipoUsuario($id){
+        return response()->json(Tipo_usuario::borrarTipo_usuario($id));
     }
 
 }
