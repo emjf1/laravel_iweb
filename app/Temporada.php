@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Temporada extends Model
 {
@@ -23,25 +24,22 @@ class Temporada extends Model
         return $temporada;
     }
 
-    public function actualizarTemporada(array $data, Temporada $temporada){
+    public static function listarTemporada(){
+        return Temporada::All();
+    }
+
+    public static function actualizarTemporada(array $data, String $id){
         DB::table('Temporada')
-            ->where('codigo', $temporada->codigo)
+            ->where('id', $id)
             ->update($data);
-
-        $temporadaActualizada = DB::table('Temporada')->where('codigo', $data['codigo'])->first();
-        return $temporadaActualizada;
+        return DB::table('Temporada')->where('id', $data['id'])->first();
     }
 
-    public function borrarTemporada(Temporada $temporada){
-        if(DB::table('Temporada')->where('codigo', $temporada->codigo)->delete())
-            return true;
-        else
-            return false;
+    public static function borrarTemporada(String $id){
+        return DB::table('Temporada')->where('id', $id)->delete();
     }
 
-    public static function mostrarTemporada(Temporada $data){
-        $temporada = Temporada::where('id', '=', $data->id);
-        return $temporada;
+    public static function mostrarTemporada(String $id){
+        return DB::table('Temporada')->where('id', $id)->first();
     }
-
 }
