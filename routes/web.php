@@ -62,11 +62,11 @@ Route::put('/temporada/{id}', 'TemporadaController@editarTemporada')->name('temp
 Route::delete('/temporada/{id}', 'TemporadaController@eliminarTemporada')->name('temporada.borrar');
 
 // Tipo de Reserva
-Route::get('/tiporeserva', 'TipoReservaController@listaTipoReserva')->name('tiporeserva.lista');
-Route::get('/tiporeserva/{id}', 'TipoReservaController@detalleTipoReserva')->name('tiporeserva.detalle');
-Route::post('/tiporeserva', 'TipoReservaController@crearTipoReserva')->name('tiporeserva.crear');
-Route::put('/tiporeserva/{id}', 'TipoReservaController@editarTipoReserva')->name('tiporeserva.editar');
-Route::delete('/tiporeserva/{id}', 'TipoReservaController@eliminarTipoReserva')->name('tiporeserva.borrar');
+Route::get('/tiporeserva', 'Tipo_reservaController@listaTipoReserva')->name('tiporeserva.lista');
+Route::get('/tiporeserva/{id}', 'Tipo_reservaController@detalleTipoReserva')->name('tiporeserva.detalle');
+Route::post('/tiporeserva', 'Tipo_reservaController@crearTipoReserva')->name('tiporeserva.crear');
+Route::put('/tiporeserva/{id}', 'Tipo_reservaController@editarTipoReserva')->name('tiporeserva.editar');
+Route::delete('/tiporeserva/{id}', 'Tipo_reservaController@eliminarTipoReserva')->name('tiporeserva.borrar');
 
 // Tipo de Usuario
 Route::get('/tipousuario', 'TipoUsuarioController@listaTipoUsuario')->name('tipousuario.lista');

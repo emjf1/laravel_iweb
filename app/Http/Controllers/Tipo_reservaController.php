@@ -7,45 +7,25 @@ use App\Tipo_reserva;
 
 class Tipo_reservaController extends Controller
 {
-    public function listaTipo_reserva()
-    {
-        $resultado = Tipo_reserva::listarTipo_reserva();
-        return response()->json($resultado);
+    public function listaTiporeserva(){
+        return response()->json(Tipo_reserva::listarTipo_reserva());
     }
 
-    public function detalleTipo_reserva($id)
-    {
-        $data = new Tipo_reserva();
-        $data->codigo = $id;
-
-        $resultado =  Tipo_reserva::mostrarTipo_reserva($data);
-        return response()->json($resultado);
+    public function detalleTiporeserva($id){
+        return response()->json(Tipo_reserva::mostrarTipo_reserva($id));
     }
 
-    public function eliminarTipo_reserva($id)
-    {
-        $tipo_reserva = new Tipo_reserva();
-        $tipo_reserva->codigo = $id;
-
-        $resultado = Tipo_reserva::borrarTipo_reserva($tipo_reserva);
-        return response()->json($resultado);
+    public function eliminarTiporeserva($id){
+        return response()->json(Tipo_reserva::borrarTipo_reserva($id));
     }
 
-    public function crearTipo_reserva(){
+    public function crearTiporeserva(){
         $data = request()->all();
-
-        $resultado = Tipo_reserva::crearTipo_reserva($data);
-        return response()->json($resultado);
+        return response()->json(Tipo_reserva::crearTipo_reserva($data));
     }
 
-    public function editarTipo_reserva($id)
-    {
+    public function editarTiporeserva($id){
         $data = request()->all();
-
-        $tipo_reserva = new Tipo_reserva();
-        $tipo_reserva->codigo = $id;
-
-        $resultado = Tipo_reserva::actualizarTipo_reserva($data, $tipo_reserva);
-        return response()->json($resultado);
+        return response()->json(Tipo_reserva::actualizarTipo_reserva($data, $id));
     }
 }

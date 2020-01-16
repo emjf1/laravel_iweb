@@ -17,10 +17,6 @@ class Regimen extends Model
         return $this->hasMany('App\Reserva');
     }
 
-    public static function listarRegimen(){
-        return Regimen::All();
-    }
-
     public static function crearRegimen(array $data){
         $regimen = new Regimen();
         $regimen->codigo = $data['codigo'];
@@ -29,6 +25,10 @@ class Regimen extends Model
         $regimen->es_sala = $data['es_sala'];
         $regimen->save();
         return $regimen;
+    }
+
+    public static function listarRegimen(){
+        return Regimen::All();
     }
 
     public static function actualizarRegimen(array $data, String $id){
