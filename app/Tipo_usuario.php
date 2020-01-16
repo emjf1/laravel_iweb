@@ -14,7 +14,7 @@ class Tipo_usuario extends Model
     public $timestamps = false;
 
     public function users(){
-        return $this->hasMany('App\Usuario');
+        return $this->hasMany('App\User');
     }
 
         public static function crearTipo_usuario(array $data){

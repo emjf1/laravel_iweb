@@ -213,13 +213,16 @@ INSERT INTO `Tipo_usuario` (`codigo`, `tipo`) VALUES
 -- Estructura de tabla para la tabla `Usuario`
 --
 
-CREATE TABLE `Usuario` (
-  `email` varchar(256) NOT NULL,
-  `nombre` text NOT NULL,
+CREATE TABLE `users` (
+  `id` int AUTO_INCREMENT,
+  `email` varchar(256) NOT NULL UNIQUE,
+  `name` varchar(256) NOT NULL,
+  `email_verified_at` TIMESTAMP NULL,
   `apellidos` text NOT NULL,
   `telefono` int(9) DEFAULT NULL,
   `direccion` text NOT NULL,
-  `password` text NOT NULL,
+  `password` varchar(256) NOT NULL,
+  `rememberToken` varchar(256),
   `dni` varchar(10) NOT NULL,
   `tipo_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -228,7 +231,7 @@ CREATE TABLE `Usuario` (
 -- Volcado de datos para la tabla `Usuario`
 --
 
-INSERT INTO `Usuario` (`email`, `nombre`, `apellidos`, `telefono`, `direccion`, `password`, `dni`, `tipo_usuario`) VALUES
+INSERT INTO `users` (`email`, `name`, `apellidos`, `telefono`, `direccion`, `password`, `dni`, `tipo_usuario`) VALUES
 ('admin2@ua.es', 'Administrador', 'Segundo', 999888777, 'Universidad de Alicante', 'AdminUA123', '12345678B', 0),
 ('admin3@ua.es', 'Administrador', 'Tercero', 999888777, 'Universidad de Alicante', 'AdminUA123', '12345678B', 0),
 ('admin@ua.es', 'Administrador', 'Principal', 999888777, 'Universidad de Alicante', 'AdminUA123', '12345678A', 0),

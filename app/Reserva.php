@@ -14,7 +14,7 @@ class Reserva extends Model
     protected $fillable = array('codigo', 'fecha_inicio', 'fecha_fin', 'descripcion');
 
     public function usuarioReserva(){
-        return $this->belongsTo('App\Usuario');
+        return $this->belongsTo('App\User');
     }
 
     public function regimenReserva(){

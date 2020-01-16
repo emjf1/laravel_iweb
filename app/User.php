@@ -17,7 +17,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'apellidos', 'telefono', 'direccion', 'dni', 'nacionalidad'
     ];
 
     /**
@@ -38,6 +38,14 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
+    public function tipo_usuario(){
+        return $this->belongsTo('App\Tipo_usuario');
+    }
+
+    public function reservas(){
+        return $this->hasMany('App\Reserva');
+    }
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
@@ -55,5 +63,38 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public static function crearUsuario(array $data){
+        $usuario = new User();
+        $usuario->email = $data['email'];
+        $usuario->name = $data['name'];
+        $usuario->apellidos = $data['apellidos'];
+        $usuario->telefono = $data['telefono'];
+        $usuario->direccion = $data['direccion'];
+        $usuario->password = $data['password'];
+        $usuario->dni = $data['dni'];
+        $usuario->tipo_usuario = $data['tipo_usuario'];
+        $usuario->save();
+        return $usuario;
+    }
+
+    public static function listarUsuario(){
+        return User::All();
+    }
+
+    public static function actualizarUsuario(array $data, String $id){
+        DB::table('users')
+            ->where('email', $id)
+            ->update($data);
+        return DB::table('users')->where('email', $data['email'])->first();
+    }
+
+    public static function borrarUsuario(String $id){
+        return DB::table('users')->where('email', $id)->delete();
+    }
+
+    public static function mostrarUsuario(String $id){
+        return DB::table('users')->where('email', $id)->first();
     }
 }
