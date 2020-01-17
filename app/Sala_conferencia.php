@@ -34,7 +34,7 @@ class Sala_conferencia extends Model
     }
 
     public static function listarSala(){
-        return Sala_conferencia::All();
+        return DB::table('sala_conferencia')->get();
     }
 
     public static function actualizarSala(array $data, String $id){
@@ -50,5 +50,13 @@ class Sala_conferencia extends Model
 
     public static function mostrarSala(String $id){
         return DB::table('Sala_conferencia')->where('codigo', $id)->first();
+    }
+
+    public static function obtenerImagenSala(String $id){
+        return DB::table('sala_conferencia')
+            ->join('imagen', 'sala_conferencia.codigo', '=', 'imagen.sala_conferencia')
+            ->where('sala_conferencia.codigo',$id)
+            ->select('imagen.codigo','imagen.url')
+            ->get();
     }
 }

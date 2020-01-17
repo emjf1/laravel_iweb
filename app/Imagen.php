@@ -18,7 +18,7 @@ class Imagen extends Model
     }
 
     public static function listarImagen(){
-        return Imagen::All();;
+        return DB::table('imagen')->get();;
     }
 
     public static function crearImagen(array $data){

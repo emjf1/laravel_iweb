@@ -14,6 +14,10 @@ class SalaController extends Controller{
         return response()->json(Sala_conferencia::mostrarSala($id));
     }
 
+    public function fotosSala($id){
+        return response()->json(Sala_conferencia::obtenerImagenSala($id));
+    }
+
     public function eliminarSala($id){
         return response()->json(Sala_conferencia::borrarSala($id));
     }
