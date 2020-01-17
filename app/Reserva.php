@@ -72,7 +72,7 @@ class Reserva extends Model
         $reservas = DB::table('reserva')->get();
         $devuelto =[];
         foreach($reservas as $reserva){
-            array_push($devuelto,self::mostrarReserva($reserva->id));
+            array_push($devuelto,self::mostrarReserva($reserva->codigo));
         }
         return $devuelto;
     }
