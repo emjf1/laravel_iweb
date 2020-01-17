@@ -23,7 +23,6 @@ class Imagen extends Model
 
     public static function crearImagen(array $data){
         $imagen = new Imagen();
-        $imagen->codigo = $data['codigo'];
         $imagen->url = $data['url'];
         $imagen->habitacion = $data['habitacion'];
         $imagen->save();

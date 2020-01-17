@@ -38,4 +38,18 @@ class ReservaController extends Controller
         $data = request()->all();
         return response()->json(Reserva::actualizarReserva($data, $id));
     }
+
+    public function mostrarDisponibles(){
+        $tipo = $request->get('tipo');
+        $fecha_inicio = $request->get('fecha_inicio');
+        $fecha_fin = $request->get('fecha_fin');
+
+        if($tipo == 'habitacion'){
+            return response()->json(Reserva::habitacionesDisponibles($fecha_inicio, $fecha_fin));
+        }
+
+        else{
+            return response()->json(Reserva::salasDisponibles($fecha_inicio, $fecha_fin));
+        }
+    }
 }

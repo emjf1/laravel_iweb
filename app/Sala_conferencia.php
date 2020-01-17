@@ -12,7 +12,7 @@ class Sala_conferencia extends Model
 
     public $timestamps = false;
 
-    protected $fillable = array('codigo', 'descripcion', 'proyector', 'microfono', 'pizarra', 'mesas', 'asientos', 'puntuacion', 'precio');
+    protected $fillable = array('codigo', 'descripcion', 'proyector', 'microfono', 'pizarra', 'mesas', 'asientos', 'puntuacion', 'precio', 'superficie');
 
     public function reservas(){
         return $this->hasMany('App\Reserva');
@@ -20,7 +20,6 @@ class Sala_conferencia extends Model
 
     public static function crearSala(array $data){
         $sala = new Sala_conferencia();
-        $sala->codigo = $data['codigo'];
         $sala->descripcion = $data['descripcion'];
         $sala->proyector = $data['proyector'];
         $sala->microfono = $data['microfono'];
@@ -29,6 +28,7 @@ class Sala_conferencia extends Model
         $sala->asientos = $data['asientos'];
         $sala->puntuacion = $data['puntuacion'];
         $sala->precio = $data['precio'];
+        $sala->superficie = $data['superficie'];
         $sala->save();
         return $sala;
     }
