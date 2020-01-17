@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Support\Facades\Hash;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -107,6 +107,6 @@ class User extends Authenticatable implements JWTSubject
     }
 
     public static function mostrarUsuario(String $id){
-        return DB::table('users')->where('email', $id)->first();
+        return DB::table('users')->where('id', $id)->first();
     }
 }

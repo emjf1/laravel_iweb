@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Reserva;
 
@@ -10,6 +11,10 @@ class ReservaController extends Controller
     public function listaReservasUsuario(){
         $usuario = auth()->user();
         return response()->json(Reserva::listarReservaUsuario($usuario->email));
+    }
+
+    public function listaReservaAdminUsuario($id){
+        return response()->json(Reserva::listarReservaUsuario($id));
     }
 
     public function obtenerListaReservasFecha(){
@@ -44,7 +49,7 @@ class ReservaController extends Controller
         $tipo = $data['tipo'];
         $fecha_inicio = $data['fecha_inicio'];
         $fecha_fin = $data['fecha_fin'];
-        
+
         if($tipo == 'habitacion'){
             return response()->json(Reserva::habitacionesDisponibles($fecha_inicio, $fecha_fin));
         }

@@ -89,6 +89,7 @@ Route::group(['middleware' => ['jwt']], function() {
 
     Route::get('/reservas', 'ReservaController@listaReserva')->name('reservas.lista');
     Route::get('/reservasusuario', 'ReservaController@listaReservaUsuario')->name('reservas.lista.usuario');
+    Route::get('/reservasusuario/{id}', 'ReservaController@listaReservaAdminUsuario')->name('reservas.lista.admin.usuario');
     Route::get('/reservas/{id}', 'ReservaController@detalleReserva')->name('reservas.detalles');
     Route::get('/perfil/reservas', 'ReservaController@listaReservasUsuario')->name('reservas.usuario.lista');
     Route::get('/reservasDisponibles', 'ReservaController@mostrarDisponibles')->name('reservas.disponibles');
