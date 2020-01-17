@@ -168,4 +168,51 @@ class Reserva extends Model
             return "No se ha solicitado habitación ni sala.";
         }
     }
+
+    public static function habitacionesDisponibles($fecha_inicio, $fecha_fin){
+ 
+        $habitaciones = [];
+        $from = date($fecha_inicio);
+        $to = date($fecha_fin);
+
+        $reservadas = DB::table('habitacion')
+            ->join('reserva', 'habitacion.codigo', '=', 'reserva.habitacion')
+            ->orWhereBetween('reserva.fecha_inicio', [$fecha_inicio,$fecha_fin])
+            ->orWhereBetween('reserva.fecha_fin', [$fecha_inicio,$fecha_fin])
+            ->select('habitacion.codigo')
+            ->get();
+
+        foreach($reservadas as $i){
+            array_push($habitaciones, $i->codigo);
+        }
+
+        return DB::table('habitacion')
+                        ->whereNotIn('habitacion.codigo', $habitaciones)
+                        ->get();
+
+    }
+
+    public static function salasDisponibles($fecha_inicio, $fecha_fin){
+ 
+        $salas = [];
+        $from = date($fecha_inicio);
+        $to = date($fecha_fin);
+
+        $reservadas = DB::table('sala_conferencia')
+            ->join('reserva', 'sala_conferencia.codigo', '=', 'reserva.sala_conferencia')
+            ->orWhereBetween('reserva.fecha_inicio', [$fecha_inicio,$fecha_fin])
+            ->orWhereBetween('reserva.fecha_fin', [$fecha_inicio,$fecha_fin])
+            ->select('sala_conferencia.codigo')
+            ->get();
+
+        foreach($reservadas as $i){
+            array_push($salas, $i->codigo);
+        }
+
+        return DB::table('sala_conferencia')
+                        ->whereNotIn('sala_conferencia.codigo', $salas)
+                        ->get();
+
+    }
+
 }
