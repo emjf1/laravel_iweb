@@ -18,6 +18,10 @@ class Sala_conferencia extends Model
         return $this->hasMany('App\Reserva');
     }
 
+    public function salaImagen(){
+        return $this->belongsTo('App\Imagen');
+    }
+
     public static function crearSala(array $data){
         $sala = new Sala_conferencia();
         $sala->descripcion = $data['descripcion'];

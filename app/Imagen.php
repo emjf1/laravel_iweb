@@ -17,6 +17,10 @@ class Imagen extends Model
         return $this->hasMany('App\Habitacion');
     }
 
+    public function sala(){
+        return $this->hasMany('App\Sala_conferencia');
+    }
+
     public static function listarImagen(){
         return DB::table('imagen')->get();;
     }
@@ -25,6 +29,7 @@ class Imagen extends Model
         $imagen = new Imagen();
         $imagen->url = $data['url'];
         $imagen->habitacion = $data['habitacion'];
+        $imagen->sala_conferencia = $data['sala_conferencia'];
         $imagen->save();
         return $imagen;
     }
