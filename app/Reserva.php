@@ -38,8 +38,11 @@ class Reserva extends Model
             return $this->belongsTo('App\Habitacion');
     }
 
-    public static function listarReservaUsuario(String $usuario){
-        return DB::table('Reserva')->where('usuario', $usuario)->get();;
+    public static function listarReservaUsuario(String $id){
+        return DB::table('users')
+            ->join('reserva', 'users.id', '=', 'reserva.usuario')->where('reserva.usuario',  $id)
+            ->select('reserva.*')
+            ->get();
     }
 
     public static function crearReserva(array $data){
@@ -66,7 +69,7 @@ class Reserva extends Model
     }
 
     public static function listarReserva(){
-        return Reserva::All();
+        return DB::table('reserva')->get();
     }
 
     //AQUI ES
@@ -170,7 +173,7 @@ class Reserva extends Model
     }
 
     public static function habitacionesDisponibles($fecha_inicio, $fecha_fin){
- 
+
         $habitaciones = [];
         $from = date($fecha_inicio);
         $to = date($fecha_fin);
@@ -193,7 +196,7 @@ class Reserva extends Model
     }
 
     public static function salasDisponibles($fecha_inicio, $fecha_fin){
- 
+
         $salas = [];
         $from = date($fecha_inicio);
         $to = date($fecha_fin);
