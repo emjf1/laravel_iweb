@@ -44,7 +44,6 @@ class Reserva extends Model
 
     public static function crearReserva(array $data){
         $reserva = new Reserva();
-        $reserva->codigo = $data['codigo'];
         $reserva->fecha_inicio = $data['fecha_inicio'];
         $reserva->fecha_fin = $data['fecha_fin'];
         $reserva->descripcion = $data['descripcion'];

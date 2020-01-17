@@ -15,7 +15,6 @@ class Temporada extends Model
 
     public static function crearTemporada(array $data){
         $temporada = new Temporada();
-        $temporada->id = $data['id'];
         $temporada->temporada = $data['temporada'];
         $temporada->fecha_inicio = $data['fecha_inicio'];
         $temporada->fecha_fin = $data['fecha_fin'];

@@ -18,7 +18,6 @@ class Tipo_reserva extends Model
     }
         public static function crearTipo_reserva(array $data){
             $treserva = new Tipo_reserva();
-            $treserva->codigo = $data['codigo'];
             $treserva->tipo = $data['tipo'];
             $treserva->save();
             return $treserva;

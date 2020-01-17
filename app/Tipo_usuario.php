@@ -19,7 +19,6 @@ class Tipo_usuario extends Model
 
         public static function crearTipo_usuario(array $data){
             $tusuario = new Tipo_usuario();
-            $tusuario->codigo = $data['codigo'];
             $tusuario->tipo = $data['tipo'];
             $tusuario->save();
             return $tusuario;
