@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 17-01-2020 a las 04:00:45
+-- Tiempo de generación: 17-01-2020 a las 04:52:39
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -254,7 +254,7 @@ CREATE TABLE `users` (
   `password` varchar(256) NOT NULL DEFAULT 'Ninguna',
   `rememberToken` varchar(256) DEFAULT 'Ninguno',
   `dni` varchar(10) DEFAULT 'Ninguno',
-  `tipo_usuario` int(11) NOT NULL,
+  `tipo_usuario` int(11) NOT NULL DEFAULT 2,
   `nacionalidad` text DEFAULT 'Ninguna'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -263,9 +263,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `name`, `apellidos`, `telefono`, `direccion`, `password`, `rememberToken`, `dni`, `tipo_usuario`, `nacionalidad`) VALUES
-(1, 'admin@ua.es', 'Pedro', 'Martinez', 658951247, 'Universidad de Alicante', '123456', 'Ninguno', '12345678A', 0, 'España'),
-(2, 'cliente@ua.es', 'Antonio', 'Sierra', 652325684, 'Universidad de Alicante', '123456', 'Ninguno', '12345678B', 2, 'Francia'),
-(3, 'recepcionista@ua.es', 'Maria', 'Garcia', 632552214, 'Universidad de Alicante', '123456', 'Ninguno', '12345678C', 1, 'Italia');
+(1, 'admin@ua.es', 'Pedro', 'Martinez', 658951247, 'Universidad de Alicante', PASSWORD('123456'), 'Ninguno', '12345678A', 0, 'España'),
+(2, 'cliente@ua.es', 'Antonio', 'Sierra', 652325684, 'Universidad de Alicante', PASSWORD('123456'), 'Ninguno', '12345678B', 2, 'Francia'),
+(3, 'recepcionista@ua.es', 'Maria', 'Garcia', 632552214, 'Universidad de Alicante', PASSWORD('123456'), 'Ninguno', '12345678C', 1, 'Italia');
 
 --
 -- Índices para tablas volcadas
