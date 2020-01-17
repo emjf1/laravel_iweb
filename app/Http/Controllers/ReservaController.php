@@ -53,4 +53,10 @@ class ReservaController extends Controller
             return response()->json(Reserva::salasDisponibles($fecha_inicio, $fecha_fin));
         }
     }
+
+    public function calcularPrecio(){
+        $data = request()->all();
+        return response()->json(Reserva::calcularPrecio($data));
+
+    }
 }
