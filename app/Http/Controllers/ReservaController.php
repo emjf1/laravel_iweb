@@ -10,7 +10,7 @@ class ReservaController extends Controller
 {
     public function listaReservasUsuario(){
         $usuario = auth()->user();
-        return response()->json(Reserva::listarReservaUsuario($usuario->email));
+        return response()->json(Reserva::listarReservaUsuario($usuario->id));
     }
 
     public function listaReservaAdminUsuario($id){
