@@ -7,9 +7,9 @@ use App\Reserva;
 
 class ReservaController extends Controller
 {
-    public function listaReservaUsuario(){
-        $usuario = "prueba@email.com";
-        return response()->json(Reserva::listarReservaUsuario($usuario));
+    public function listaReservasUsuario(){
+        $usuario = auth()->user();
+        return response()->json(Reserva::listarReservaUsuario($usuario->email));
     }
 
     public function obtenerListaReservasFecha(){

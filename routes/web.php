@@ -49,10 +49,10 @@ Route::group(['middleware' => ['jwt']], function() {
 
     Route::post('/logout', 'AuthController@logout')->name('logout');
     Route::post('/refresh', 'AuthController@refresh')->name('refresh');
-    Route::post('/perfil', 'AuthController@me')->name('perfil');
+    Route::get('/perfil', 'AuthController@me')->name('perfil');
 
     Route::post('/usuarios', 'UsuarioController@crearUsuario')->name('usuarios.crear');
-    Route::put('/usuarios/{userID}', 'UsuarioController@editarUsuario')->name('usuarios.editar');
+    Route::put('/editarPerfil', 'UsuarioController@editarUsuario')->name('usuarios.editar');
     Route::delete('/usuarios/{userID}', 'UsuarioController@eliminarUsuario')->name('usuarios.borrar');
 
     Route::post('/tipousuario', 'TipoUsuarioController@crearTipoUsuario')->name('tipousuario.crear');

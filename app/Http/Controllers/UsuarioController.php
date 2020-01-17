@@ -53,8 +53,9 @@ class UsuarioController extends Controller
         return response()->json(User::crearUsuario($data));
     }
 
-    public function editarUsuario($id){
+    public function editarUsuario(){
         $data = request()->all();
+        $id = auth()->user()->email;
         return response()->json(User::actualizarUsuario($data, $id));
     }
 }

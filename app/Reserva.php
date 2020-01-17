@@ -53,8 +53,8 @@ class Reserva extends Model
         $reserva->sala_conferencia   = $data['sala_conferencia'];
         $reserva->regimen = $data['regimen'];
         $reserva->tipo_reserva = $data['tipo_reserva'];
-
-        if(self::compruebaFecha($reserva)) {
+        $reserva->save();
+        /*if(self::compruebaFecha($reserva)) {
             if(self::compruebaUsuario($reserva)){
                 $reserva->save();
                 return $reserva;
@@ -63,7 +63,7 @@ class Reserva extends Model
             }
         }else{
             return "La fecha elegida está reservada";
-        }
+        }*/
     }
 
     public static function listarReserva(){
