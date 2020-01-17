@@ -69,7 +69,12 @@ class Reserva extends Model
     }
 
     public static function listarReserva(){
-        return DB::table('reserva')->get();
+        $reservas = DB::table('reserva')->get();
+        $devuelto =[];
+        foreach($reservas as $reserva){
+            array_push($devuelto,self::mostrarReserva($reserva->id));
+        }
+        return $devuelto;
     }
 
     //AQUI ES
@@ -92,7 +97,11 @@ class Reserva extends Model
     }
 
     public static function mostrarReserva(String $id){
-        return DB::table('Reserva')->where('codigo', $id)->first();
+        $reserva = DB::table('Reserva')->where('codigo', $id)->first();
+
+        $usuario = User::mostrarUsuario($reserva->usuario);
+        $reserva->usuario = $usuario->email;
+        return $reserva;
     }
 
     public static function buscaUsuario(String $id){
