@@ -2,8 +2,8 @@
 -- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 17-01-2020 a las 04:52:39
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 17-01-2020 a las 05:09:49
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Habitacion`
+-- Estructura de tabla para la tabla `habitacion`
 --
 
-CREATE TABLE `Habitacion` (
+CREATE TABLE `habitacion` (
   `codigo` int(11) NOT NULL,
   `descripcion` text NOT NULL DEFAULT 'Ninguna',
   `vistas` text NOT NULL DEFAULT 'Ninguna',
@@ -41,10 +41,10 @@ CREATE TABLE `Habitacion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `Habitacion`
+-- Volcado de datos para la tabla `habitacion`
 --
 
-INSERT INTO `Habitacion` (`codigo`, `descripcion`, `vistas`, `plazas`, `superficie`, `precio`, `categoria`, `wifi`, `puntuacion`) VALUES
+INSERT INTO `habitacion` (`codigo`, `descripcion`, `vistas`, `plazas`, `superficie`, `precio`, `categoria`, `wifi`, `puntuacion`) VALUES
 (1, 'Habitacion deluxe con buenas vistas', 'Buenas', 2, 50, 100, 'Individual', 1, 7),
 (2, 'Habitacion familiar con vestidor y nevera', 'Regulares', 1, 30, 50, 'Familiar', 1, 5),
 (3, 'Habitacion con galeria para diseñadores', 'Buenas', 1, 53, 25, 'Individual', 1, 7),
@@ -59,20 +59,20 @@ INSERT INTO `Habitacion` (`codigo`, `descripcion`, `vistas`, `plazas`, `superfic
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Imagen`
+-- Estructura de tabla para la tabla `imagen`
 --
 
-CREATE TABLE `Imagen` (
+CREATE TABLE `imagen` (
   `codigo` int(11) NOT NULL,
   `url` text NOT NULL DEFAULT 'Ninguna',
   `habitacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `Imagen`
+-- Volcado de datos para la tabla `imagen`
 --
 
-INSERT INTO `Imagen` (`codigo`, `url`, `habitacion`) VALUES
+INSERT INTO `imagen` (`codigo`, `url`, `habitacion`) VALUES
 (1, 'https://www.trhhoteles.com/cache/cc/f8/ccf8830071140e1004e00d0426e39903.jpg', 1),
 (2, 'https://www.palia.es/dms/multiHotel-Palia-Hotels-New/hotel-maria-eugenia/clasic-rooms/habitacion-doble-1/doble-1.jpg', 1),
 (3, 'https://www.trhhoteles.com/cache/ac/36/ac36d46dea2e46e6942e876af7732fac.jpg', 2),
@@ -94,10 +94,10 @@ CREATE TABLE `migrations` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Regimen`
+-- Estructura de tabla para la tabla `regimen`
 --
 
-CREATE TABLE `Regimen` (
+CREATE TABLE `regimen` (
   `codigo` int(11) NOT NULL,
   `regimen` text NOT NULL DEFAULT 'Ninguno',
   `porcentaje` float NOT NULL DEFAULT 0,
@@ -105,10 +105,10 @@ CREATE TABLE `Regimen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `Regimen`
+-- Volcado de datos para la tabla `regimen`
 --
 
-INSERT INTO `Regimen` (`codigo`, `regimen`, `porcentaje`, `es_sala`) VALUES
+INSERT INTO `regimen` (`codigo`, `regimen`, `porcentaje`, `es_sala`) VALUES
 (1, 'Solo Sala', 1, 1),
 (2, 'Con Cátering', 1.2, 1),
 (3, 'Con Asistentes', 1.5, 1),
@@ -120,10 +120,10 @@ INSERT INTO `Regimen` (`codigo`, `regimen`, `porcentaje`, `es_sala`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Reserva`
+-- Estructura de tabla para la tabla `reserva`
 --
 
-CREATE TABLE `Reserva` (
+CREATE TABLE `reserva` (
   `codigo` int(11) NOT NULL,
   `fecha_inicio` date NOT NULL,
   `fecha_fin` date NOT NULL,
@@ -136,20 +136,20 @@ CREATE TABLE `Reserva` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `Reserva`
+-- Volcado de datos para la tabla `reserva`
 --
 
-INSERT INTO `Reserva` (`codigo`, `fecha_inicio`, `fecha_fin`, `descripcion`, `usuario`, `habitacion`, `sala_conferencia`, `regimen`, `tipo_reserva`) VALUES
+INSERT INTO `reserva` (`codigo`, `fecha_inicio`, `fecha_fin`, `descripcion`, `usuario`, `habitacion`, `sala_conferencia`, `regimen`, `tipo_reserva`) VALUES
 (1, '2020-01-16', '2020-01-22', 'Reserva deluxe para famoso', '1', 1, NULL, 5, 2),
 (2, '2020-01-16', '2020-01-22', 'Sala de reuniones para empresa', '1', NULL, 2, 2, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Sala_conferencia`
+-- Estructura de tabla para la tabla `sala_conferencia`
 --
 
-CREATE TABLE `Sala_conferencia` (
+CREATE TABLE `sala_conferencia` (
   `codigo` int(11) NOT NULL,
   `descripcion` text NOT NULL DEFAULT 'Ninguna',
   `proyector` tinyint(1) NOT NULL,
@@ -162,10 +162,10 @@ CREATE TABLE `Sala_conferencia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `Sala_conferencia`
+-- Volcado de datos para la tabla `sala_conferencia`
 --
 
-INSERT INTO `Sala_conferencia` (`codigo`, `descripcion`, `proyector`, `microfono`, `pizarra`, `mesas`, `asientos`, `puntuacion`, `precio`) VALUES
+INSERT INTO `sala_conferencia` (`codigo`, `descripcion`, `proyector`, `microfono`, `pizarra`, `mesas`, `asientos`, `puntuacion`, `precio`) VALUES
 (1, 'Charlas sobre actividades', 1, 0, 0, 20, 20, 7, 25),
 (2, 'Informacion sobre el hotel', 0, 1, 0, 30, 30, 10, 15),
 (3, 'Otras charlas', 0, 1, 0, 20, 20, 5, 30);
@@ -173,10 +173,10 @@ INSERT INTO `Sala_conferencia` (`codigo`, `descripcion`, `proyector`, `microfono
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Temporada`
+-- Estructura de tabla para la tabla `temporada`
 --
 
-CREATE TABLE `Temporada` (
+CREATE TABLE `temporada` (
   `id` int(11) NOT NULL,
   `temporada` text NOT NULL DEFAULT 'Ninguna',
   `fecha_inicio` varchar(5) NOT NULL,
@@ -185,10 +185,10 @@ CREATE TABLE `Temporada` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `Temporada`
+-- Volcado de datos para la tabla `temporada`
 --
 
-INSERT INTO `Temporada` (`id`, `temporada`, `fecha_inicio`, `fecha_fin`, `porcentaje`) VALUES
+INSERT INTO `temporada` (`id`, `temporada`, `fecha_inicio`, `fecha_fin`, `porcentaje`) VALUES
 (1, 'Baja Primavera', '01-04', '31-05', 0.8),
 (2, 'Baja invierno', '01-10', '31-11', 0.8),
 (3, 'Media Primavera', '01-06', '15-07', 1),
@@ -200,19 +200,19 @@ INSERT INTO `Temporada` (`id`, `temporada`, `fecha_inicio`, `fecha_fin`, `porcen
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Tipo_reserva`
+-- Estructura de tabla para la tabla `tipo_reserva`
 --
 
-CREATE TABLE `Tipo_reserva` (
+CREATE TABLE `tipo_reserva` (
   `codigo` int(11) NOT NULL,
   `tipo` text NOT NULL DEFAULT 'Ninguno'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `Tipo_reserva`
+-- Volcado de datos para la tabla `tipo_reserva`
 --
 
-INSERT INTO `Tipo_reserva` (`codigo`, `tipo`) VALUES
+INSERT INTO `tipo_reserva` (`codigo`, `tipo`) VALUES
 (1, 'Mostrador'),
 (2, 'Página web'),
 (3, 'Teléfono'),
@@ -221,19 +221,19 @@ INSERT INTO `Tipo_reserva` (`codigo`, `tipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Tipo_usuario`
+-- Estructura de tabla para la tabla `tipo_usuario`
 --
 
-CREATE TABLE `Tipo_usuario` (
+CREATE TABLE `tipo_usuario` (
   `codigo` int(11) NOT NULL,
   `tipo` text NOT NULL DEFAULT 'Ninguno'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `Tipo_usuario`
+-- Volcado de datos para la tabla `tipo_usuario`
 --
 
-INSERT INTO `Tipo_usuario` (`codigo`, `tipo`) VALUES
+INSERT INTO `tipo_usuario` (`codigo`, `tipo`) VALUES
 (0, 'Administrador'),
 (1, 'Recepcionista'),
 (2, 'Cliente');
@@ -263,24 +263,24 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `name`, `apellidos`, `telefono`, `direccion`, `password`, `rememberToken`, `dni`, `tipo_usuario`, `nacionalidad`) VALUES
-(1, 'admin@ua.es', 'Pedro', 'Martinez', 658951247, 'Universidad de Alicante', PASSWORD('123456'), 'Ninguno', '12345678A', 0, 'España'),
-(2, 'cliente@ua.es', 'Antonio', 'Sierra', 652325684, 'Universidad de Alicante', PASSWORD('123456'), 'Ninguno', '12345678B', 2, 'Francia'),
-(3, 'recepcionista@ua.es', 'Maria', 'Garcia', 632552214, 'Universidad de Alicante', PASSWORD('123456'), 'Ninguno', '12345678C', 1, 'Italia');
+(1, 'admin@ua.es', 'Pedro', 'Martinez', 658951247, 'Universidad de Alicante', '$2y$10$WiLdcT1mSKpeumupAvv9B.gimrt63jLYPa8S49ppEPSvxkSuRQuXa', 'Ninguno', '12345678A', 0, 'España'),
+(2, 'cliente@ua.es', 'Antonio', 'Sierra', 652325684, 'Universidad de Alicante', '$2y$10$WiLdcT1mSKpeumupAvv9B.gimrt63jLYPa8S49ppEPSvxkSuRQuXa', 'Ninguno', '12345678B', 2, 'Francia'),
+(3, 'recepcionista@ua.es', 'Maria', 'Garcia', 632552214, 'Universidad de Alicante', '$2y$10$WiLdcT1mSKpeumupAvv9B.gimrt63jLYPa8S49ppEPSvxkSuRQuXa', 'Ninguno', '12345678C', 1, 'Italia');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `Habitacion`
+-- Indices de la tabla `habitacion`
 --
-ALTER TABLE `Habitacion`
+ALTER TABLE `habitacion`
   ADD PRIMARY KEY (`codigo`);
 
 --
--- Indices de la tabla `Imagen`
+-- Indices de la tabla `imagen`
 --
-ALTER TABLE `Imagen`
+ALTER TABLE `imagen`
   ADD PRIMARY KEY (`codigo`),
   ADD KEY `fk_habitacion_imagen` (`habitacion`);
 
@@ -291,15 +291,15 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `Regimen`
+-- Indices de la tabla `regimen`
 --
-ALTER TABLE `Regimen`
+ALTER TABLE `regimen`
   ADD PRIMARY KEY (`codigo`);
 
 --
--- Indices de la tabla `Reserva`
+-- Indices de la tabla `reserva`
 --
-ALTER TABLE `Reserva`
+ALTER TABLE `reserva`
   ADD PRIMARY KEY (`codigo`),
   ADD KEY `fk_reserva_tipoReserva` (`tipo_reserva`),
   ADD KEY `fk_reserva_regimen` (`regimen`),
@@ -308,27 +308,27 @@ ALTER TABLE `Reserva`
   ADD KEY `fk_reserva_usuario` (`usuario`);
 
 --
--- Indices de la tabla `Sala_conferencia`
+-- Indices de la tabla `sala_conferencia`
 --
-ALTER TABLE `Sala_conferencia`
+ALTER TABLE `sala_conferencia`
   ADD PRIMARY KEY (`codigo`);
 
 --
--- Indices de la tabla `Temporada`
+-- Indices de la tabla `temporada`
 --
-ALTER TABLE `Temporada`
+ALTER TABLE `temporada`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `Tipo_reserva`
+-- Indices de la tabla `tipo_reserva`
 --
-ALTER TABLE `Tipo_reserva`
+ALTER TABLE `tipo_reserva`
   ADD PRIMARY KEY (`codigo`);
 
 --
--- Indices de la tabla `Tipo_usuario`
+-- Indices de la tabla `tipo_usuario`
 --
-ALTER TABLE `Tipo_usuario`
+ALTER TABLE `tipo_usuario`
   ADD PRIMARY KEY (`codigo`);
 
 --
@@ -344,15 +344,15 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT de la tabla `Habitacion`
+-- AUTO_INCREMENT de la tabla `habitacion`
 --
-ALTER TABLE `Habitacion`
+ALTER TABLE `habitacion`
   MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT de la tabla `Imagen`
+-- AUTO_INCREMENT de la tabla `imagen`
 --
-ALTER TABLE `Imagen`
+ALTER TABLE `imagen`
   MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
@@ -362,46 +362,46 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `Regimen`
+-- AUTO_INCREMENT de la tabla `regimen`
 --
-ALTER TABLE `Regimen`
+ALTER TABLE `regimen`
   MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de la tabla `Reserva`
+-- AUTO_INCREMENT de la tabla `reserva`
 --
-ALTER TABLE `Reserva`
+ALTER TABLE `reserva`
   MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `Sala_conferencia`
+-- AUTO_INCREMENT de la tabla `sala_conferencia`
 --
-ALTER TABLE `Sala_conferencia`
+ALTER TABLE `sala_conferencia`
   MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `Temporada`
+-- AUTO_INCREMENT de la tabla `temporada`
 --
-ALTER TABLE `Temporada`
+ALTER TABLE `temporada`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de la tabla `Tipo_reserva`
+-- AUTO_INCREMENT de la tabla `tipo_reserva`
 --
-ALTER TABLE `Tipo_reserva`
+ALTER TABLE `tipo_reserva`
   MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `Tipo_usuario`
+-- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
-ALTER TABLE `Tipo_usuario`
+ALTER TABLE `tipo_usuario`
   MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
