@@ -44,8 +44,8 @@ CREATE TABLE `Habitacion` (
 INSERT INTO `Habitacion` (`codigo`, `descripcion`, `vistas`, `plazas`, `superficie`, `precio`, `categoria`, `wifi`, `puntuacion`) VALUES
 (0, 'deluxe', 'buenas', 3, 250, 75, 'alta', 0, 10),
 (1, 'pareja', 'regulares', 2, 140, 30, 'normal', 1, 5),
-(2, 'individual', 'buenas', 1, 75, 20, 'baja', 0, 7);
-(3, 'familiar', 'malas', 4, 180, 45, 'alta', 1, 8);
+(2, 'individual', 'buenas', 1, 75, 20, 'baja', 0, 7),
+(3, 'familiar', 'malas', 4, 180, 45, 'alta', 1, 8),
 (4, 'larga estancia', 'regulares', 2, 100, 47, 'normal', 0, 3);
 -- --------------------------------------------------------
 
