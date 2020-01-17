@@ -215,4 +215,43 @@ class Reserva extends Model
 
     }
 
+    public static function calcularPrecio(array $data){
+
+        $regimen = $data['regimen'];
+        $fecha_inicio = date($data['fecha_inicio']);
+        $fecha_fin = date($data['fecha_fin']);
+        $tipo = $data['tipo'];
+        $id = $data['codigo'];
+
+        $precioBase = 0;
+
+        if($tipo == 'habitacion'){
+
+            $precioBase = DB::table('habitacion')
+                        ->where('codigo',$id)
+                        ->select('precio')
+                        ->first();
+        }
+
+        else{
+
+            $precioBase = DB::table('sala')
+                        ->where('codigo',$id)
+                        ->select('precio')
+                        ->first();
+        }
+
+        $porcentajeRegimen = DB::table('regimen')
+                        ->where('codigo', $regimen)
+                        ->select('porcentaje')
+                        ->first();
+
+        $avgtemporada = DB::table('temporada')
+        ->orWhereBetween('temporada.fecha_inicio', [$fecha_inicio,$fecha_fin])
+        ->orWhereBetween('temporada.fecha_fin', [$fecha_inicio,$fecha_fin])
+        ->avg('porcentaje');
+
+        return round($precioBase->precio + ($precioBase->precio*$avgtemporada) + ($precioBase->precio*$porcentajeRegimen->porcentaje),2);
+    }
+
 }
