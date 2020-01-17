@@ -3,11 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class Tipo_usuario extends Model
 {
-    protected $table = "Tipo_usuario";
+    protected $table = "tipo_usuario";
 
     protected $fillable = array('codigo', 'tipo');
 

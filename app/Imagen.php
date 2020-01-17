@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Imagen extends Model
 {
-    protected $table = "Imagen";
+    protected $table = "imagen";
 
     public $timestamps = false;
 

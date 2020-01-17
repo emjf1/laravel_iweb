@@ -5,14 +5,14 @@ namespace App;
 use App\Http\Controllers\UsuarioController;
 use DateInterval;
 use Illuminate\Database\Eloquent\Model;
-use DB;
+use Illuminate\Support\Facades\DB;
 use DateTime;
 use Date;
 
 
 class Reserva extends Model
 {
-    protected $table = "Reserva";
+    protected $table = "reserva";
 
     public $timestamps = false;
 
@@ -55,7 +55,13 @@ class Reserva extends Model
         $reserva->sala_conferencia   = $data['sala_conferencia'];
         $reserva->regimen = $data['regimen'];
         $reserva->tipo_reserva = $data['tipo_reserva'];
-        $reserva->save();
+        if(!is_null(self::compruebaUsuario($reserva))){
+            $reserva->save();
+            return $reserva;
+        }else{
+            return "No se ha podido crear el usuario";
+        }
+        //$reserva->save();
         /*if(self::compruebaFecha($reserva)) {
             if(self::compruebaUsuario($reserva)){
                 $reserva->save();
@@ -69,7 +75,7 @@ class Reserva extends Model
     }
 
     public static function listarReserva(){
-        $reservas = DB::table('reserva')->get();
+        $reservas = Reserva::all();
         $devuelto =[];
         foreach($reservas as $reserva){
             array_push($devuelto,self::mostrarReserva($reserva->codigo));
@@ -97,7 +103,7 @@ class Reserva extends Model
     }
 
     public static function mostrarReserva(String $id){
-        $reserva = DB::table('Reserva')->where('codigo', $id)->first();
+        $reserva = DB::table('reserva')->where('codigo', $id)->first();
 
         $usuario = User::mostrarUsuario($reserva->usuario);
         $reserva->usuario = $usuario->email;
@@ -115,10 +121,13 @@ class Reserva extends Model
         }else{
             $u = new User();
             $u->email = $reserva->usuario;
-            if(is_null(User::registrarUsuario($u))){
-                return false;
+            $us = User::registrarUsuario($u);
+            $reserva->usuario = $us->id;
+            if(is_null($us)){
+                $reserva = null;
+                return $reserva;
             }else{
-                return true;
+                return $reserva;
             }
         }
     }
