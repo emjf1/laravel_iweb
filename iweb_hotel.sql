@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 17-01-2020 a las 05:28:46
+-- Tiempo de generación: 17-01-2020 a las 16:05:55
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -65,8 +65,8 @@ INSERT INTO `habitacion` (`codigo`, `descripcion`, `vistas`, `plazas`, `superfic
 CREATE TABLE `imagen` (
   `codigo` int(11) NOT NULL,
   `url` text NOT NULL DEFAULT 'Ninguna',
-  `habitacion` int(11) DEFAULT null,
-  `sala_conferencia`int(11) DEFAULT null
+  `habitacion` int(11) DEFAULT NULL,
+  `sala_conferencia` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -74,11 +74,11 @@ CREATE TABLE `imagen` (
 --
 
 INSERT INTO `imagen` (`codigo`, `url`, `habitacion`, `sala_conferencia`) VALUES
-(1, 'https://www.trhhoteles.com/cache/cc/f8/ccf8830071140e1004e00d0426e39903.jpg', 1, null),
-(2, 'https://www.palia.es/dms/multiHotel-Palia-Hotels-New/hotel-maria-eugenia/clasic-rooms/habitacion-doble-1/doble-1.jpg', 1, null),
-(3, 'https://www.trhhoteles.com/cache/ac/36/ac36d46dea2e46e6942e876af7732fac.jpg', null, 1),
-(4, 'https://www.medplaya.es/files/hotel/calypso/tour-2018/Calypso%20Habitacio%E2%95%A0%C3%BCn%20Family%20Superior%20D%2002%20900%20x%20500.jpg', null, 1),
-(5, 'https://www.trhhoteles.com/cache/28/e7/28e7d4bbfc566c977a4f984a32280d45.jpg', 3, null);
+(1, 'https://www.trhhoteles.com/cache/cc/f8/ccf8830071140e1004e00d0426e39903.jpg', 1, NULL),
+(2, 'https://www.palia.es/dms/multiHotel-Palia-Hotels-New/hotel-maria-eugenia/clasic-rooms/habitacion-doble-1/doble-1.jpg', 1, NULL),
+(3, 'https://www.trhhoteles.com/cache/ac/36/ac36d46dea2e46e6942e876af7732fac.jpg', NULL, 1),
+(4, 'https://www.medplaya.es/files/hotel/calypso/tour-2018/Calypso%20Habitacio%E2%95%A0%C3%BCn%20Family%20Superior%20D%2002%20900%20x%20500.jpg', NULL, 1),
+(5, 'https://www.trhhoteles.com/cache/28/e7/28e7d4bbfc566c977a4f984a32280d45.jpg', 3, NULL);
 
 -- --------------------------------------------------------
 
