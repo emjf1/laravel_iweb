@@ -2,8 +2,8 @@
 -- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 17-01-2020 a las 05:09:49
+-- Servidor: localhost
+-- Tiempo de generación: 17-01-2020 a las 05:28:46
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -158,17 +158,18 @@ CREATE TABLE `sala_conferencia` (
   `mesas` int(11) NOT NULL,
   `asientos` int(11) NOT NULL,
   `puntuacion` int(11) NOT NULL,
-  `precio` int(11) NOT NULL
+  `precio` int(11) NOT NULL,
+  `superficie` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `sala_conferencia`
 --
 
-INSERT INTO `sala_conferencia` (`codigo`, `descripcion`, `proyector`, `microfono`, `pizarra`, `mesas`, `asientos`, `puntuacion`, `precio`) VALUES
-(1, 'Charlas sobre actividades', 1, 0, 0, 20, 20, 7, 25),
-(2, 'Informacion sobre el hotel', 0, 1, 0, 30, 30, 10, 15),
-(3, 'Otras charlas', 0, 1, 0, 20, 20, 5, 30);
+INSERT INTO `sala_conferencia` (`codigo`, `descripcion`, `proyector`, `microfono`, `pizarra`, `mesas`, `asientos`, `puntuacion`, `precio`, `superficie`) VALUES
+(1, 'Charlas sobre actividades', 1, 0, 0, 20, 20, 7, 25, 28),
+(2, 'Informacion sobre el hotel', 0, 1, 0, 30, 30, 10, 15, 54),
+(3, 'Otras charlas', 0, 1, 0, 20, 20, 5, 30, 36);
 
 -- --------------------------------------------------------
 
