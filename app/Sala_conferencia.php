@@ -3,12 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class Sala_conferencia extends Model
 
 {
-    protected $table = "Sala_conferencia";
+    protected $table = "sala_conferencia";
 
     public $timestamps = false;
 

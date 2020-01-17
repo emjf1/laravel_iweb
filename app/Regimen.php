@@ -7,7 +7,7 @@ use DB;
 
 class Regimen extends Model
 {
-    protected $table = "Regimen";
+    protected $table = "regimen";
 
     public $timestamps = false;
 

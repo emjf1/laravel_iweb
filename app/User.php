@@ -68,6 +68,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+    protected $table = "users";
 
     public static function crearUsuario(array $data){
         $usuario = new User();

@@ -3,11 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class Tipo_reserva extends Model
 {
-    protected $table = "Tipo_reserva";
+    protected $table = "tipo_reserva";
 
     public $timestamps = false;
 

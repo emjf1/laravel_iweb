@@ -3,11 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class Temporada extends Model
 {
-    protected $table = "Temporada";
+    protected $table = "temporada";
 
     public $timestamps = false;
 
