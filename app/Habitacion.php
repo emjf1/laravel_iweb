@@ -27,7 +27,6 @@ class Habitacion extends Model
 
     public static function crearHabitacion(array $data){
         $habitacion = new Habitacion();
-        $habitacion->codigo = $data['codigo'];
         $habitacion->descripcion = $data['descripcion'];
         $habitacion->vistas = $data['vistas'];
         $habitacion->plazas = $data['plazas'];

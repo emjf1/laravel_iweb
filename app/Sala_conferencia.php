@@ -20,7 +20,6 @@ class Sala_conferencia extends Model
 
     public static function crearSala(array $data){
         $sala = new Sala_conferencia();
-        $sala->codigo = $data['codigo'];
         $sala->descripcion = $data['descripcion'];
         $sala->proyector = $data['proyector'];
         $sala->microfono = $data['microfono'];

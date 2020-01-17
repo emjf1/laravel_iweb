@@ -19,7 +19,6 @@ class Regimen extends Model
 
     public static function crearRegimen(array $data){
         $regimen = new Regimen();
-        $regimen->codigo = $data['codigo'];
         $regimen->regimen = $data['regimen'];
         $regimen->porcentaje = $data['porcentaje'];
         $regimen->es_sala = $data['es_sala'];
